@@ -9,13 +9,13 @@ export interface AppState {
   readonly fontMatch:FontMatch
 }
 
-export const fontMatchInitialState:FontMatch = {
+export const initialState:FontMatch = {
   displayText:'Match your fonts in colours',
 };
 
 
-const _fontMatchReducer = createReducer(fontMatchInitialState,
-  on(updateText, (state,{inputText}) => ({displayText: inputText})),
+const _fontMatchReducer = createReducer(initialState,
+  on(updateText, (state,{inputText}) => ({...state, displayText: inputText})),
 );
 
 export function fontMatchReducer(state, action) {

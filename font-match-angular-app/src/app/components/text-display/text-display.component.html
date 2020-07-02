@@ -4,7 +4,7 @@
 
 </div>
 <mat-form-field>
-  <input matInput type="text" placeholder="Your text">
+  <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
 </mat-form-field>
 
 {{$displayText | async}}
