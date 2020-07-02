@@ -1,11 +1,13 @@
 <div class="display-area" fxLayoutAlign="center center">
 
-  <div class="display-text">Find your fonts in colours</div>
+  <div class="display-text">{{$displayText | async}}</div>
 
 </div>
 <mat-form-field>
   <input matInput type="text" placeholder="Your text">
 </mat-form-field>
+
+{{$displayText | async}}
 
 <style>
 
@@ -23,8 +25,8 @@
   }
 
   mat-form-field{
+    margin-top:10px;
     width:100%
   }
-
 
 </style>

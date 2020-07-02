@@ -14,6 +14,10 @@ import { CustomizeAreaComponent } from './components/customize-area/customize-ar
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatInputModule} from "@angular/material/input";
 import { SelectionAreaComponent } from './components/selection-area/selection-area.component';
+import {FormsModule} from "@angular/forms";
+import { StoreModule } from '@ngrx/store';
+import {fontMatchReducer} from "./+store/fontmatch.reducer";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [
@@ -32,7 +36,14 @@ import { SelectionAreaComponent } from './components/selection-area/selection-ar
     MatIconModule,
     FlexLayoutModule,
     MatTabsModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    StoreModule.forRoot({fontMatch:fontMatchReducer},{}),
+    StoreDevtoolsModule.instrument({
+      name:'Font match store',
+      maxAge: 10
+    }),
+
 
   ],
   providers: [],

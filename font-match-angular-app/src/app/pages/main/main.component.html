@@ -1,18 +1,19 @@
-<div fxLayout="row">
-  <div fxFlex="50%" class="display-container" >
+<div fxLayout="column" fxLayout.gt-sm="row">
+  <div fxFlex="auto" fxFlex.md="50%" class="display-container" >
     <app-text-display></app-text-display>
   </div>
-  <div fxFlex="50%" class="display-container" >
+  <div fxFlex="auto" fxFlex.md="50%" class="display-container" >
     <app-customize-area></app-customize-area>
   </div>
 </div>
-<app-selection-area></app-selection-area>
+<div fxLayout="row" class="display-container">
+  <app-selection-area fxFlex="100%"></app-selection-area>
+</div>
 
-<style>
+<style type="text/scss">
   .display-container{
-    padding:15px
+    padding: 15px;
   }
-
 </style>
 
 

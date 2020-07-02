@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../+store/fontmatch.reducer";
 
 @Component({
   selector: 'app-text-display',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextDisplayComponent implements OnInit {
 
-  constructor() { }
+  $displayText:Observable<string>;
+
+  constructor(private  store:Store<AppState>) {
+    this.$displayText = this.store.select(state => state.fontMatch.displayText);
+  }
 
   ngOnInit(): void {
+
   }
 
 }
