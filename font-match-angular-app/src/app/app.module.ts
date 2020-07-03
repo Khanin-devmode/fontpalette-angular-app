@@ -21,6 +21,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
+import { FontDisplayComponent } from './components/font-display/font-display.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatMenuModule} from "@angular/material/menu";
     MainComponent,
     TextDisplayComponent,
     CustomizeAreaComponent,
-    SelectionAreaComponent
+    SelectionAreaComponent,
+    FontDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,6 @@ import {MatMenuModule} from "@angular/material/menu";
     MatSliderModule,
     MatButtonModule,
     MatMenuModule
-
 
   ],
   providers: [],

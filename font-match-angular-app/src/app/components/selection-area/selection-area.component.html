@@ -1,5 +1,9 @@
 <mat-tab-group>
-  <mat-tab label="Google Fonts">Google Fonts</mat-tab>
+  <mat-tab label="Google Fonts" fxLayout="row">
+
+  <app-font-display *ngFor="let font of $googleFontList|async" [fontFamily]="font.family"></app-font-display>
+
+  </mat-tab>
   <mat-tab label="Favorites">Favorites</mat-tab>
 </mat-tab-group>
 
