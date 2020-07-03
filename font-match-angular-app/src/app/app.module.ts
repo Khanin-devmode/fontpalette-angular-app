@@ -18,6 +18,9 @@ import {FormsModule} from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
 import {fontMatchReducer} from "./+store/fontmatch.reducer";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {MatSliderModule} from "@angular/material/slider";
+import {MatButtonModule} from "@angular/material/button";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
       name:'Font match store',
       maxAge: 10
     }),
+    MatSliderModule,
+    MatButtonModule,
+    MatMenuModule
 
 
   ],
