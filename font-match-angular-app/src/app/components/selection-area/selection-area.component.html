@@ -1,9 +1,25 @@
 <mat-tab-group>
-  <mat-tab label="Google Fonts" fxLayout="row">
-
-  <app-font-display *ngFor="let font of $googleFontList|async" [fontFamily]="font.family"></app-font-display>
-
+  <mat-tab label="Google Fonts">
+    <div fxFlexFill fxLayout="row" class="font-cards-container">
+      <app-font-display fxFlex="33" *ngFor="let font of $googleFontList|async"
+                        [fontFamily]="font.family"
+                        [displayText]="$displayText | async"
+                        [fontSize]="$fontSize | async"
+      >
+      </app-font-display>
+    </div>
   </mat-tab>
+
   <mat-tab label="Favorites">Favorites</mat-tab>
 </mat-tab-group>
+
+
+<style>
+
+  .font-cards-container{
+    flex-flow: row wrap;
+  }
+
+</style>
+
 

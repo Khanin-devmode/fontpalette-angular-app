@@ -7,10 +7,9 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class FontDisplayComponent implements OnInit {
 
-  @Input()
-  fontFamily:string;
-  displayText:string;
-  fontSize:number;
+  @Input() fontFamily:string;
+  @Input() displayText:string;
+  @Input() fontSize:number;
 
   constructor() { }
 

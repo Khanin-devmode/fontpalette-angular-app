@@ -1,11 +1,18 @@
-
-<div class="font-display">
-  <p>{{fontFamily}}</p>
+<div class="font-card-wrapper">
+  <div class="font-display">
+    <p [ngStyle]="{'font-size.px':fontSize,'font-family':fontFamily}">{{displayText}}</p>
+  </div>
 </div>
+
 
 <style>
 
+  .font-card-wrapper{
+    padding:5px;
+  }
+
   .font-display{
+    padding:5px;
     border: #757575 1px solid;
     border-radius: 5px;
   }

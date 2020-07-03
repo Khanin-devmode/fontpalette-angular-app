@@ -22,6 +22,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import { FontDisplayComponent } from './components/font-display/font-display.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { FontDisplayComponent } from './components/font-display/font-display.com
     }),
     MatSliderModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
 
   ],
   providers: [],

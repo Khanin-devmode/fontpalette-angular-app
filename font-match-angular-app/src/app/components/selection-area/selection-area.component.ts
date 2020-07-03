@@ -10,11 +10,15 @@ import {Observable} from "rxjs";
 })
 export class SelectionAreaComponent implements OnInit {
 
-  $googleFontList: Observable<{}[]>
+  $googleFontList: Observable<{}[]>;
+  $displayText: Observable<string>;
+  $fontSize:Observable<number>
 
   constructor(private store:Store<AppState>) {
 
-    this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList)
+    this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
+    this.$displayText = this.store.select(state => state.fontMatch.displayText);
+    this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
 
   }
 
