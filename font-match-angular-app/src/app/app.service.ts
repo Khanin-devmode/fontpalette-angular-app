@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "./+store/fontmatch.reducer";
 import {fetchGoogleFontSuccess} from "./+store/fontmatch.actions";
+import * as WebFont from 'webfontloader';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,6 @@ import {fetchGoogleFontSuccess} from "./+store/fontmatch.actions";
 export class AppService {
 
   constructor(private store: Store<AppState>) {
-
-    console.log('This is a log from service');
 
   }
 
@@ -26,11 +25,20 @@ export class AppService {
       })
       .then(function (data) {
         console.log(data);
-
         self.store.dispatch(fetchGoogleFontSuccess({fontList: data.items}))
+
+        self.loadWebFonts();
 
       });
 
+  }
+
+  loadWebFonts(){
+    WebFont.load({
+      google: {
+        families: ['Droid Sans', 'Droid Serif','Open Sans', 'Noto Sans JP']
+      }
+    });
   }
 
 
