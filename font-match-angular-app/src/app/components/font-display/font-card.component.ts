@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AppUtilService} from "../../app.util.service";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'font-card',
@@ -13,14 +13,13 @@ export class FontCardComponent implements OnInit {
   @Input() fontSize:number;
   @Input() index:number;
 
-  constructor(public util:AppUtilService) { }
+  constructor(public appService:AppService) { }
 
   ngOnInit(): void {
 
-    this.util.loadGoogleFont(this.fontFamily);
+    this.appService.loadGoogleFont(this.fontFamily);
 
   }
-
 
 
 }

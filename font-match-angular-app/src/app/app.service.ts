@@ -10,6 +10,8 @@ import {AppUtilService} from "./app.util.service";
 })
 export class AppService {
 
+  loadedGoogleFont:string[] =[];
+
   constructor(private store: Store<AppState>,
               private util:AppUtilService
   ) {
@@ -42,12 +44,23 @@ export class AppService {
 
   }
 
-  loadWebFonts(googleFontFamilyList:string[]){
-    return WebFont.load({
-      google: {
-        families: googleFontFamilyList
-      }
-    });
+  loadGoogleFont(googleFont:string){
+
+    if(this.loadedGoogleFont.includes(googleFont)){
+
+      // console.log(`already has font: ${googleFont}`)
+
+    }else{
+
+      // console.log(`loading font: ${googleFont}`)
+      this.loadedGoogleFont.push(googleFont);
+      return WebFont.load({
+        google: {
+          families: [googleFont]
+        }
+      });
+
+    }
   }
 
 }

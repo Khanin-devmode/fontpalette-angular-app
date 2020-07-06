@@ -21,12 +21,4 @@ export class AppUtilService {
 
   }
 
-  loadGoogleFont(googleFont){
-    return WebFont.load({
-      google: {
-        families: [googleFont]
-      }
-    });
-  }
-
 }
