@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FontDisplayComponent } from './font-display.component';
+import { CardRowComponent } from './card-row.component';
 
-describe('FontDisplayComponent', () => {
-  let component: FontDisplayComponent;
-  let fixture: ComponentFixture<FontDisplayComponent>;
+describe('CardRowComponent', () => {
+  let component: CardRowComponent;
+  let fixture: ComponentFixture<CardRowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FontDisplayComponent ]
+      declarations: [ CardRowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FontDisplayComponent);
+    fixture = TestBed.createComponent(CardRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

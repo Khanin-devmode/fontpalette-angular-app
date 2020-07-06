@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@an
 import {Store} from "@ngrx/store";
 import {AppState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
+import {AppUtilService} from "../../app.util.service";
 
 @Component({
   selector: 'app-selection-area',
@@ -17,7 +18,10 @@ export class SelectionAreaComponent implements OnInit {
   $displayText: Observable<string>;
   $fontSize:Observable<number>
 
-  constructor(private store:Store<AppState>) {
+  constructor(private store:Store<AppState>,
+              public util:AppUtilService
+
+  ) {
 
     this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
     this.$displayText = this.store.select(state => state.fontMatch.displayText);

@@ -21,10 +21,10 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
-import { FontDisplayComponent } from './components/font-display/font-display.component';
-import {CdkVirtualScrollViewport, ScrollingModule} from "@angular/cdk/scrolling";
+import { FontCardComponent } from './components/font-display/font-card.component';
+import {ScrollingModule} from "@angular/cdk/scrolling";
+import { CardRowComponent } from './components/card-row/card-row.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import {VirtualScrollerModule} from "ngx-virtual-scroller";
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import {VirtualScrollerModule} from "ngx-virtual-scroller";
     TextDisplayComponent,
     CustomizeAreaComponent,
     SelectionAreaComponent,
-    FontDisplayComponent
+    FontCardComponent,
+    CardRowComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +56,8 @@ import {VirtualScrollerModule} from "ngx-virtual-scroller";
     MatButtonModule,
     MatMenuModule,
     ScrollingModule,
-    MatGridListModule,
-    VirtualScrollerModule
+    MatGridListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

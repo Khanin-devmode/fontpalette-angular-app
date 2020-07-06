@@ -1,0 +1,9 @@
+<div class="row-container" fxLayout="row">
+  <font-card fxFlex="33" *ngFor="let font of fontGroup" [fontFamily]="font.family" [fontSize]="fontSize" [displayText]="displayText"></font-card>
+</div>
+
+<style>
+  .row-container{
+    height: 222px;
+  }
+</style>

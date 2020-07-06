@@ -3,13 +3,16 @@ import {Store} from "@ngrx/store";
 import {AppState} from "./+store/fontmatch.reducer";
 import {fetchGoogleFontSuccess} from "./+store/fontmatch.actions";
 import * as WebFont from 'webfontloader';
+import {AppUtilService} from "./app.util.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>,
+              private util:AppUtilService
+  ) {
 
   }
 
@@ -30,9 +33,10 @@ export class AppService {
         console.log(data.items);
 
         googleFontFamilyList = data.items.map(item => item.family);
+        // self.loadWebFonts(googleFontFamilyList);
 
-        self.store.dispatch(fetchGoogleFontSuccess({fontList: data.items}))
-        self.loadWebFonts(googleFontFamilyList);
+        console.log(self.util.groupArray(data.items,3));
+        self.store.dispatch(fetchGoogleFontSuccess({fontList: self.util.groupArray(data.items,3)}))
 
       });
 
@@ -45,6 +49,5 @@ export class AppService {
       }
     });
   }
-
 
 }

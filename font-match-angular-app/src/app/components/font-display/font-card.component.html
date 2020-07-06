@@ -1,9 +1,9 @@
 <div class="font-card-wrapper">
   <div class="font-display">
+    {{index}} {{fontFamily}}
     <p [ngStyle]="{'font-size.px':fontSize,'font-family':fontFamily}">{{displayText}}</p>
   </div>
 </div>
-
 
 <style>
 
@@ -13,7 +13,7 @@
 
   .font-display{
     padding:5px;
-    height:fit-content;
+    height:200px;
     border: #757575 1px solid;
     border-radius: 5px;
     line-height:normal;
