@@ -1,23 +1,58 @@
 <mat-tab-group>
   <mat-tab label="Google Fonts">
-    <div fxFlexFill fxLayout="row" class="font-cards-container">
-      <app-font-display fxFlex="33" *ngFor="let font of $googleFontList|async"
+
+    <!--    <mat-grid-list rowHeight="120px" cols="3">-->
+    <!--        <mat-grid-tile *ngFor="let font of $googleFontList|async">-->
+    <!--          <app-font-display-->
+    <!--            [fontFamily]="font.family"-->
+    <!--            [displayText]="$displayText | async"-->
+    <!--            [fontSize]="$fontSize | async"-->
+    <!--          ></app-font-display>-->
+    <!--        </mat-grid-tile>-->
+    <!--    </mat-grid-list>-->
+
+    <!--    <div fxFlexFill fxLayout="row" class="font-cards-container">-->
+    <!--      <app-font-display fxFlex="33" *ngFor="let font of $googleFontList|async"-->
+    <!--                        [fontFamily]="font.family"-->
+    <!--                        [displayText]="$displayText | async"-->
+    <!--                        [fontSize]="$fontSize | async"-->
+    <!--      >-->
+    <!--      </app-font-display>-->
+    <!--    </div>-->
+    <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="30">
+      <app-font-display fxFlex="33" *cdkVirtualFor="let font of $googleFontList|async"
                         [fontFamily]="font.family"
                         [displayText]="$displayText | async"
                         [fontSize]="$fontSize | async"
       >
       </app-font-display>
-    </div>
-  </mat-tab>
+    </cdk-virtual-scroll-viewport>
 
+    <!--    <virtual-scroller #scroll [items]="$googleFontList|async" class="font-cards-container">-->
+    <!--            <app-font-display *ngFor="let font of $googleFontList|async"-->
+    <!--                              [fontFamily]="font.family"-->
+    <!--                              [displayText]="$displayText | async"-->
+    <!--                              [fontSize]="$fontSize | async"-->
+    <!--            >-->
+    <!--            </app-font-display>-->
+    <!--    </virtual-scroller>-->
+
+
+  </mat-tab>
   <mat-tab label="Favorites">Favorites</mat-tab>
 </mat-tab-group>
 
 
 <style>
 
-  .font-cards-container{
-    flex-flow: row wrap;
+  .virtual-viewport {
+    height: 90vh;
+  }
+
+  .virtual-viewport .cdk-virtual-scroll-content-wrapper {
+    width: 100%;
+    flex-wrap: wrap;
+
   }
 
 </style>

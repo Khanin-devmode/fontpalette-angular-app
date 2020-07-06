@@ -17,6 +17,8 @@ export class AppService {
 
     const self = this;
 
+    let googleFontFamilyList:string[];
+
     //fetch end point
     // https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC-lyWoKHEk_O1POin-c-MwpU468Vcyw-4
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC-lyWoKHEk_O1POin-c-MwpU468Vcyw-4&sort=popularity')
@@ -24,19 +26,22 @@ export class AppService {
         return resp.json();
       })
       .then(function (data) {
-        console.log(data);
-        self.store.dispatch(fetchGoogleFontSuccess({fontList: data.items}))
 
-        self.loadWebFonts();
+        console.log(data.items);
+
+        googleFontFamilyList = data.items.map(item => item.family);
+
+        self.store.dispatch(fetchGoogleFontSuccess({fontList: data.items}))
+        self.loadWebFonts(googleFontFamilyList);
 
       });
 
   }
 
-  loadWebFonts(){
-    WebFont.load({
+  loadWebFonts(googleFontFamilyList:string[]){
+    return WebFont.load({
       google: {
-        families: ['Droid Sans', 'Droid Serif','Open Sans', 'Noto Sans JP']
+        families: googleFontFamilyList
       }
     });
   }

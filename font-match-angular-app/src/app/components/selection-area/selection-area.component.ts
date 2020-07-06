@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
@@ -6,7 +6,10 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'app-selection-area',
   templateUrl: './selection-area.component.html',
-  styleUrls: ['./selection-area.component.scss']
+  styleUrls: ['./selection-area.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class SelectionAreaComponent implements OnInit {
 

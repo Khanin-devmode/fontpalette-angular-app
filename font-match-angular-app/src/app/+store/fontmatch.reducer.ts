@@ -12,7 +12,7 @@ export interface AppState {
 }
 
 export const initialState:FontMatch = {
-  displayText:'Match your fonts in colours',
+  displayText:'Find your fonts in colours',
   fontSize:40,
   googleFontList:[]
 };

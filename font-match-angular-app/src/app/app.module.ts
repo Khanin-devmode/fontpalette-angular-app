@@ -22,7 +22,9 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import { FontDisplayComponent } from './components/font-display/font-display.component';
-import {HttpClientModule} from "@angular/common/http";
+import {CdkVirtualScrollViewport, ScrollingModule} from "@angular/cdk/scrolling";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {VirtualScrollerModule} from "ngx-virtual-scroller";
 
 @NgModule({
   declarations: [
@@ -44,15 +46,17 @@ import {HttpClientModule} from "@angular/common/http";
     MatTabsModule,
     MatInputModule,
     FormsModule,
-    StoreModule.forRoot({fontMatch:fontMatchReducer},{}),
+    StoreModule.forRoot({fontMatch: fontMatchReducer}, {}),
     StoreDevtoolsModule.instrument({
-      name:'Font match store',
+      name: 'Font match store',
       maxAge: 10
     }),
     MatSliderModule,
     MatButtonModule,
     MatMenuModule,
-
+    ScrollingModule,
+    MatGridListModule,
+    VirtualScrollerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
