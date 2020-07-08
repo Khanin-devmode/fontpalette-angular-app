@@ -10,6 +10,8 @@ export class CardRowComponent implements OnInit {
   @Input() fontGroup:{}[];
   @Input() displayText:string;
   @Input() fontSize:number;
+  @Input() fontColor:string;
+  @Input() selectedBgColor:string;
 
   constructor() { }
 

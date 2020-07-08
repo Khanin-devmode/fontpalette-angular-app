@@ -1,4 +1,4 @@
-<mat-tab-group>
+<mat-tab-group animationDuration="800">
   <mat-tab label="Google Fonts">
 
     <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="222">
@@ -6,18 +6,26 @@
                     [fontGroup]="fontGroup"
                     [displayText]="$displayText | async"
                     [fontSize]="$fontSize | async"
+                    [fontColor]="$fontColor | async"
+                    [selectedBgColor]="$selectedBgColor | async"
+
       ></app-card-row>
     </cdk-virtual-scroll-viewport>
 
 
   </mat-tab>
-  <mat-tab label="Favorites">Favorites</mat-tab>
+  <mat-tab label="Favorites">
+    <div style="height:50vh; width:100%">
+      Favorites
+
+    </div>
+  </mat-tab>
 </mat-tab-group>
 
 <style>
 
   .virtual-viewport {
-    height: 90vh;
+    height: calc(100vh - 60px);
 
   }
 

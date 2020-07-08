@@ -12,6 +12,8 @@ export class FontCardComponent implements OnInit {
   @Input() displayText:string;
   @Input() fontSize:number;
   @Input() index:number;
+  @Input() fontColor:string;
+  @Input() selectedBgColor:string;
 
   constructor(public appService:AppService) { }
 

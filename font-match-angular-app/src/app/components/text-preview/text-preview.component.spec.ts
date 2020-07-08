@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextDisplayComponent } from './text-display.component';
+import { TextPreviewComponent } from './text-preview.component';
 
 describe('TextDisplayComponent', () => {
-  let component: TextDisplayComponent;
-  let fixture: ComponentFixture<TextDisplayComponent>;
+  let component: TextPreviewComponent;
+  let fixture: ComponentFixture<TextPreviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextDisplayComponent ]
+      declarations: [ TextPreviewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextDisplayComponent);
+    fixture = TestBed.createComponent(TextPreviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

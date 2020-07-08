@@ -16,7 +16,9 @@ export class SelectionAreaComponent implements OnInit {
 
   $googleFontList: Observable<{}[]>;
   $displayText: Observable<string>;
-  $fontSize:Observable<number>
+  $fontSize:Observable<number>;
+  $fontColor:Observable<string>;
+  $selectedBgColor:Observable<string>
 
   constructor(private store:Store<AppState>,
               public util:AppUtilService
@@ -26,6 +28,8 @@ export class SelectionAreaComponent implements OnInit {
     this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
     this.$displayText = this.store.select(state => state.fontMatch.displayText);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
+    this.$fontColor = this.store.select(state=>state.fontMatch.selectedFontColor);
+    this.$selectedBgColor = this.store.select(state=>state.fontMatch.selectedBgColor);
 
   }
 

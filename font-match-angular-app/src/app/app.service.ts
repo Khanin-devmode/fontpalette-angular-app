@@ -22,8 +22,6 @@ export class AppService {
 
     const self = this;
 
-    let googleFontFamilyList:string[];
-
     //fetch end point
     // https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC-lyWoKHEk_O1POin-c-MwpU468Vcyw-4
     fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyC-lyWoKHEk_O1POin-c-MwpU468Vcyw-4&sort=popularity')
@@ -33,9 +31,6 @@ export class AppService {
       .then(function (data) {
 
         console.log(data.items);
-
-        googleFontFamilyList = data.items.map(item => item.family);
-        // self.loadWebFonts(googleFontFamilyList);
 
         console.log(self.util.groupArray(data.items,3));
         self.store.dispatch(fetchGoogleFontSuccess({fontList: self.util.groupArray(data.items,3)}))

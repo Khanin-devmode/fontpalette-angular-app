@@ -1,6 +1,10 @@
 
-<div class="display-area" fxLayoutAlign="center center">
-  <div id="displayText" [ngStyle]="{'font-size.px':$fontSize | async}" class="display-text">{{$displayText | async}}</div>
+<div class="display-area" [ngStyle]="{
+  'font-size.px':$fontSize | async,
+  'color':$fontColor|async,
+  'background-color':$bgColor|async
+  }"  fxLayoutAlign="center center">
+  <div id="displayText" class="display-text">{{$displayText | async}}</div>
 </div>
 <mat-form-field>
   <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
@@ -17,7 +21,6 @@
 
   .display-text{
     padding:10px;
-    font-size: 36px;
     line-height:normal;
   }
 

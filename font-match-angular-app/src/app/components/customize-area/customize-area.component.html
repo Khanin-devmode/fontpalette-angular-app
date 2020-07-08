@@ -1,4 +1,4 @@
-<mat-tab-group mat-align-tabs="center">
+<mat-tab-group animationDuration="800" mat-align-tabs="center">
   <mat-tab label="Font">
     <div class="font-size-container" fxLayout="row">
       <button mat-button [matMenuTriggerFor]="fontSizeMenu">{{$fontSize|async}}px
@@ -9,9 +9,22 @@
                     (input)="updateFontSize($event.value)"></mat-slider>
       </div>
     </div>
+      <span [style.background]="arrayColors.fontColor"
+            [cpToggle]="true"
+            [cpDialogDisplay]="'inline'"
+            [(colorPicker)]="arrayColors.fontColor"
+            (colorPickerChange)="updateFontColor()"
+      ></span>
 
   </mat-tab>
-  <mat-tab label="Background">Background</mat-tab>
+  <mat-tab label="Background">Background
+      <span [style.background]="arrayColors.bgColor"
+            [cpToggle]="true"
+            [cpDialogDisplay]="'inline'"
+            [(colorPicker)]="arrayColors.bgColor"
+            (colorPickerChange)="updateBgColor()"
+      ></span>
+  </mat-tab>
 </mat-tab-group>
 
 <mat-menu #fontSizeMenu="matMenu" xPosition="before" class="font-size-menu">
@@ -22,6 +35,10 @@
 
 <style>
 
+  .select-font-color-wrapper{
+    height:200px
+  }
+
   .mat-slider-horizontal {
     width: 100%
   }
@@ -30,8 +47,9 @@
     margin-top: 5px;
   }
 
-  .font-size-menu .mat-menu-panel {
-    width: 80px;
+  .font-size-menu {
+    min-width: 90px !important;
+    max-height: 250px !important;
   }
 
 </style>

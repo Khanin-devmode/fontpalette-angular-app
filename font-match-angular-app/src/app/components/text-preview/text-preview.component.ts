@@ -5,23 +5,23 @@ import {AppState, initialState} from "../../+store/fontmatch.reducer";
 import {updateText} from "../../+store/fontmatch.actions";
 
 @Component({
-  selector: 'app-text-display',
-  templateUrl: './text-display.component.html',
-  styleUrls: ['./text-display.component.scss']
+  selector: 'app-text-preview',
+  templateUrl: './text-preview.component.html',
+  styleUrls: ['./text-preview.component.scss']
 })
-export class TextDisplayComponent implements OnInit {
+
+export class TextPreviewComponent{
 
   $displayText:Observable<string>;
   $fontSize:Observable<number>;
+  $fontColor:Observable<string>;
+  $bgColor:Observable<string>;
 
   constructor(private  store:Store<AppState>) {
     this.$displayText = this.store.select(state => state.fontMatch.displayText);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
-
-  }
-
-  ngOnInit(): void {
-
+    this.$fontColor = this.store.select(state => state.fontMatch.selectedFontColor);
+    this.$bgColor = this.store.select(state => state.fontMatch.selectedBgColor);
   }
 
   updateText(e){
@@ -30,7 +30,6 @@ export class TextDisplayComponent implements OnInit {
     }else{
       this.store.dispatch(updateText({inputText:initialState.displayText}))
     }
-    // this.store.dispatch(updateText({inputText:e.target.value}))
   }
 
 }
