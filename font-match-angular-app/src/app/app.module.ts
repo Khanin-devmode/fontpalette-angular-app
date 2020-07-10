@@ -13,7 +13,7 @@ import { TextPreviewComponent } from './components/text-preview/text-preview.com
 import { CustomizeAreaComponent } from './components/customize-area/customize-area.component';
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatInputModule} from "@angular/material/input";
-import { SelectionAreaComponent } from './components/selection-area/selection-area.component';
+import { FontSelectionAreaComponent } from './components/font-selection-area/font-selection-area.component';
 import {FormsModule} from "@angular/forms";
 import { StoreModule } from '@ngrx/store';
 import {fontMatchReducer} from "./+store/fontmatch.reducer";
@@ -26,6 +26,8 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
 import { CardRowComponent } from './components/card-row/card-row.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {ColorPickerModule} from "ngx-color-picker";
+import { BgSelectionAreaComponent } from './components/bg-selection-area/bg-selection-area.component';
+import { BgCardComponent } from './components/bg-card/bg-card.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import {ColorPickerModule} from "ngx-color-picker";
     MainComponent,
     TextPreviewComponent,
     CustomizeAreaComponent,
-    SelectionAreaComponent,
+    FontSelectionAreaComponent,
     FontCardComponent,
-    CardRowComponent
+    CardRowComponent,
+    BgSelectionAreaComponent,
+    BgCardComponent
   ],
   imports: [
     BrowserModule,

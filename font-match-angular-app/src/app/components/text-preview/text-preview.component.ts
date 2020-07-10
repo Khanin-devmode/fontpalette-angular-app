@@ -12,23 +12,26 @@ import {updateText} from "../../+store/fontmatch.actions";
 
 export class TextPreviewComponent{
 
-  $displayText:Observable<string>;
+  $previewText:Observable<string>;
+  $fontFamily:Observable<string>;
   $fontSize:Observable<number>;
   $fontColor:Observable<string>;
   $bgColor:Observable<string>;
 
   constructor(private  store:Store<AppState>) {
-    this.$displayText = this.store.select(state => state.fontMatch.displayText);
+    this.$previewText = this.store.select(state => state.fontMatch.previewText);
+    this.$fontFamily = this.store.select(state => state.fontMatch.selectedFontFamily)
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
     this.$fontColor = this.store.select(state => state.fontMatch.selectedFontColor);
     this.$bgColor = this.store.select(state => state.fontMatch.selectedBgColor);
   }
 
   updateText(e){
+    console.log(e.target.value);
     if(e.target.value){
       this.store.dispatch(updateText({inputText:e.target.value}))
     }else{
-      this.store.dispatch(updateText({inputText:initialState.displayText}))
+      this.store.dispatch(updateText({inputText:initialState.previewText}))
     }
   }
 

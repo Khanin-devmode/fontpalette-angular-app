@@ -1,5 +1,6 @@
-<mat-tab-group animationDuration="800" mat-align-tabs="center">
+<mat-tab-group dynamicHeight animationDuration="800" mat-align-tabs="center" (selectedIndexChange)="navChildOutlet($event)">
   <mat-tab label="Font">
+    {{$selectedFont | async}}
     <div class="font-size-container" fxLayout="row">
       <button mat-button [matMenuTriggerFor]="fontSizeMenu">{{$fontSize|async}}px
         <mat-icon>arrow_drop_down</mat-icon>
@@ -17,7 +18,7 @@
       ></span>
 
   </mat-tab>
-  <mat-tab label="Background">Background
+  <mat-tab label="Background" routerLink="/bg-select">Background
       <span [style.background]="arrayColors.bgColor"
             [cpToggle]="true"
             [cpDialogDisplay]="'inline'"

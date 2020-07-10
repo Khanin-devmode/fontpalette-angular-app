@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as WebFont from 'webfontloader'
+import * as tinyColor from 'tinycolor2'
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +19,10 @@ export class AppUtilService {
 
     return chunks;
 
+  }
+
+  genMonoColor(hexColor:string){
+    return tinyColor(hexColor).monochromatic().map(t => t.toHexString());
   }
 
 }

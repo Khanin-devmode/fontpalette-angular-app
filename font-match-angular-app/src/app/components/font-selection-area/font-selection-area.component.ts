@@ -5,20 +5,21 @@ import {Observable} from "rxjs";
 import {AppUtilService} from "../../app.util.service";
 
 @Component({
-  selector: 'app-selection-area',
-  templateUrl: './selection-area.component.html',
-  styleUrls: ['./selection-area.component.scss'],
+  selector: 'app-font-selection-area',
+  templateUrl: './font-selection-area.component.html',
+  styleUrls: ['./font-selection-area.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class SelectionAreaComponent implements OnInit {
+export class FontSelectionAreaComponent implements OnInit {
 
   $googleFontList: Observable<{}[]>;
   $displayText: Observable<string>;
   $fontSize:Observable<number>;
   $fontColor:Observable<string>;
-  $selectedBgColor:Observable<string>
+  $selectedBgColor:Observable<string>;
+  $selectedFont:Observable<string>;
 
   constructor(private store:Store<AppState>,
               public util:AppUtilService
@@ -26,11 +27,11 @@ export class SelectionAreaComponent implements OnInit {
   ) {
 
     this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
-    this.$displayText = this.store.select(state => state.fontMatch.displayText);
+    this.$displayText = this.store.select(state => state.fontMatch.previewText);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
     this.$fontColor = this.store.select(state=>state.fontMatch.selectedFontColor);
     this.$selectedBgColor = this.store.select(state=>state.fontMatch.selectedBgColor);
-
+    this.$selectedFont = this.store.select(state => state.fontMatch.selectedFontFamily)
   }
 
   ngOnInit(): void {

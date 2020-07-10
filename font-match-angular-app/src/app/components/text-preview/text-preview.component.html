@@ -1,10 +1,11 @@
 
 <div class="display-area" [ngStyle]="{
+  'font-family': $fontFamily | async,
   'font-size.px':$fontSize | async,
   'color':$fontColor|async,
   'background-color':$bgColor|async
   }"  fxLayoutAlign="center center">
-  <div id="displayText" class="display-text">{{$displayText | async}}</div>
+  <div id="displayText" class="display-text">{{$previewText | async}}</div>
 </div>
 <mat-form-field>
   <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
