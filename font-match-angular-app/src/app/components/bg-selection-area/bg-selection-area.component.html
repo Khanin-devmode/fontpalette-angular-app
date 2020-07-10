@@ -1,8 +1,14 @@
 <mat-tab-group>
   <mat-tab label="Monochrome">
     <div fxLayout="row" class="row-wrap">
-      <div fxFlex="33" *ngFor="let color of $monoColor|async">{{color}}</div>
-<!--      <app-bg-card fxFlex="33" > </app-bg-card>-->
+      <app-bg-card fxFlex="33" *ngFor="let color of $monoColor|async"
+                   [bgColor]="color"
+                   [selectedFont]="$selectedFontFamily |async"
+                   [previewText]="$previewText | async"
+                   [selectedFontColor]="$selectedFontColor | async"
+                   [fontSize]="$fontSize | async"
+
+      > </app-bg-card>
     </div>
   </mat-tab>
   <mat-tab label="Split complement">

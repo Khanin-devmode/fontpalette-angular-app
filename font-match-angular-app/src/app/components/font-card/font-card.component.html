@@ -1,5 +1,6 @@
 <div class="font-card-wrapper" (click)="selectFont(fontFamily)">
-  <div class="font-display"
+  {{fontFamily}}
+  <div class="font-display" fxLayoutAlign="center center"
        [class.font-selected]="selectedFont == fontFamily"
        [ngStyle]=
          "{
@@ -7,7 +8,6 @@
           'color':fontColor
           }"
   >
-    {{index}} {{fontFamily}}
     <p [ngStyle]=
          "{
           'font-size.px':fontSize,

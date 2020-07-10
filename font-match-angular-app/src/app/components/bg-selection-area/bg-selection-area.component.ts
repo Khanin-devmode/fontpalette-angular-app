@@ -14,6 +14,7 @@ export class BgSelectionAreaComponent implements OnInit {
   $selectedFontFamily : Observable<string>;
   $selectedFontColor : Observable<string>;
   $monoColor: Observable<string[]>;
+  $fontSize:Observable<number>
 
   constructor(private store:Store<AppState>) {
 
@@ -21,6 +22,7 @@ export class BgSelectionAreaComponent implements OnInit {
     this.$selectedFontFamily = this.store.select(state => state.fontMatch.selectedFontFamily);
     this.$selectedFontColor = this.store.select(state => state.fontMatch.selectedFontColor);
     this.$monoColor = this.store.select(state => state.fontMatch.monoBgColor);
+    this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
 
   }
 

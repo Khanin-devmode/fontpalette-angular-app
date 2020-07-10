@@ -37,6 +37,8 @@ export class CustomizeAreaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.store.dispatch(updateMonoBgColor({monoColors:this.util.genMonoColor(this.arrayColors.bgColor)}))
   }
 
   updateFontSize(fontSize:number){

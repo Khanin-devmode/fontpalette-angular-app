@@ -1,1 +1,23 @@
-<p>bg-card works!</p>
+<div class="bg-card-container" [ngStyle]="{
+          'background-color':bgColor,
+          'color':selectedFontColor,
+          'font-family':selectedFont,
+          'font-size.px': fontSize
+          }" fxLayoutAlign="center center">
+  <p>{{previewText}}</p>
+
+</div>
+
+<style>
+
+  .bg-card-container{
+    width:100%;
+    padding:5px;
+    height:200px;
+  }
+
+  p{
+    line-height: normal;
+  }
+
+</style>
