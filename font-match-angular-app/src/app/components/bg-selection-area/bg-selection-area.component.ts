@@ -14,15 +14,24 @@ export class BgSelectionAreaComponent implements OnInit {
   $selectedFontFamily : Observable<string>;
   $selectedFontColor : Observable<string>;
   $monoColor: Observable<string[]>;
-  $fontSize:Observable<number>
+  $fontSize:Observable<number>;
+  $splitCompColors:Observable<string[]>;
+  $triadColors:Observable<string[]>;
+  $tetradColors:Observable<string[]>;
+  $compColor:Observable<string>;
 
   constructor(private store:Store<AppState>) {
 
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
     this.$selectedFontFamily = this.store.select(state => state.fontMatch.selectedFontFamily);
     this.$selectedFontColor = this.store.select(state => state.fontMatch.selectedFontColor);
-    this.$monoColor = this.store.select(state => state.fontMatch.monoBgColor);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
+
+    this.$monoColor = this.store.select(state => state.fontMatch.monoBgColor);
+    this.$splitCompColors = this.store.select(state => state.fontMatch.splitCompColors);
+    this.$triadColors = this.store.select(state => state.fontMatch.triadColors);
+    this.$tetradColors = this.store.select(state => state.fontMatch.tetradColors);
+    this.$compColor = this.store.select(state => state.fontMatch.compColor);
 
   }
 

@@ -2,7 +2,14 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState, initialState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
-import {updateFontColor, updateFontSize, updateMonoBgColor, updatePreviewBg} from "../../+store/fontmatch.actions";
+import {
+  updateCompColor,
+  updateFontColor,
+  updateFontSize,
+  updateMonoBgColors,
+  updatePreviewBg,
+  updateSplitCompColors, updateTetradColors, updateTriadColors
+} from "../../+store/fontmatch.actions";
 import {AppUtilService} from "../../app.util.service";
 import {Router} from "@angular/router";
 
@@ -23,8 +30,6 @@ export class CustomizeAreaComponent implements OnInit {
   public arrayColors: any = {
     bgColor: initialState.selectedBgColor,
     fontColor: initialState.selectedFontColor,
-    color3: '',
-    color4: '',
   };
 
   constructor(
@@ -38,7 +43,13 @@ export class CustomizeAreaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.dispatch(updateMonoBgColor({monoColors:this.util.genMonoColor(this.arrayColors.bgColor)}))
+    const bgColor = this.arrayColors.bgColor
+    this.store.dispatch(updateMonoBgColors({monoColors:this.util.genMonoColor(bgColor)}))
+    this.store.dispatch(updateSplitCompColors({splitCompColors:this.util.getSplitColor(bgColor)}))
+    this.store.dispatch(updateTriadColors({triadColors:this.util.getTriadColor(bgColor)}))
+    this.store.dispatch(updateTetradColors({tetradColors:this.util.getTetradColor(bgColor)}))
+    this.store.dispatch(updateCompColor({compColor:this.util.getComplementColor(bgColor)}))
+
   }
 
   updateFontSize(fontSize:number){
@@ -50,7 +61,12 @@ export class CustomizeAreaComponent implements OnInit {
     const bgColor = this.arrayColors.bgColor
 
     this.store.dispatch(updatePreviewBg({bgColor:bgColor}));
-    this.store.dispatch(updateMonoBgColor({monoColors:this.util.genMonoColor(bgColor)}))
+
+    this.store.dispatch(updateMonoBgColors({monoColors:this.util.genMonoColor(bgColor)}))
+    this.store.dispatch(updateSplitCompColors({splitCompColors:this.util.getSplitColor(bgColor)}))
+    this.store.dispatch(updateTriadColors({triadColors:this.util.getTriadColor(bgColor)}))
+    this.store.dispatch(updateTetradColors({tetradColors:this.util.getTetradColor(bgColor)}))
+    this.store.dispatch(updateCompColor({compColor:this.util.getComplementColor(bgColor)}))
 
   }
 

@@ -1,7 +1,7 @@
 <mat-tab-group>
   <mat-tab label="Monochrome">
     <div fxLayout="row" class="row-wrap">
-      <app-bg-card fxFlex="33" *ngFor="let color of $monoColor|async"
+      <app-bg-card fxFlex="33.33" *ngFor="let color of $monoColor|async"
                    [bgColor]="color"
                    [selectedFont]="$selectedFontFamily |async"
                    [previewText]="$previewText | async"
@@ -12,6 +12,50 @@
     </div>
   </mat-tab>
   <mat-tab label="Split complement">
+    Complement color
+    <div fxLayout="row" class="row-wrap">
+      <app-bg-card fxFlex="100"
+                   [bgColor]="$compColor|async"
+                   [selectedFont]="$selectedFontFamily |async"
+                   [previewText]="$previewText | async"
+                   [selectedFontColor]="$selectedFontColor | async"
+                   [fontSize]="$fontSize | async"
+
+      > </app-bg-card>
+    </div>
+    Split complement Color
+    <div fxLayout="row" class="row-wrap">
+      <app-bg-card fxFlex="33.33" *ngFor="let color of $splitCompColors|async"
+                   [bgColor]="color"
+                   [selectedFont]="$selectedFontFamily |async"
+                   [previewText]="$previewText | async"
+                   [selectedFontColor]="$selectedFontColor | async"
+                   [fontSize]="$fontSize | async"
+
+      > </app-bg-card>
+    </div>
+    Triad colors
+    <div fxLayout="row" class="row-wrap">
+      <app-bg-card fxFlex="33.33" *ngFor="let color of $triadColors|async"
+                   [bgColor]="color"
+                   [selectedFont]="$selectedFontFamily |async"
+                   [previewText]="$previewText | async"
+                   [selectedFontColor]="$selectedFontColor | async"
+                   [fontSize]="$fontSize | async"
+
+      > </app-bg-card>
+    </div>
+    Tetrad colors
+    <div fxLayout="row" class="row-wrap">
+      <app-bg-card fxFlex="25" *ngFor="let color of $tetradColors|async"
+                   [bgColor]="color"
+                   [selectedFont]="$selectedFontFamily |async"
+                   [previewText]="$previewText | async"
+                   [selectedFontColor]="$selectedFontColor | async"
+                   [fontSize]="$fontSize | async"
+
+      > </app-bg-card>
+    </div>
 
   </mat-tab>
 </mat-tab-group>
