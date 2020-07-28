@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="center center" class="wrapper">
+<div fxLayout="column" fxLayoutAlign="start center" class="wrapper">
   <div class="display-area" [ngStyle]="{
   'font-family': $fontFamily | async,
   'font-size.px':$fontSize | async,
@@ -7,12 +7,21 @@
   }"  fxLayoutAlign="center center">
     <div id="displayText" class="display-text">{{$previewText | async}}</div>
   </div>
-  <mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Your text</mat-label>
     <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
   </mat-form-field>
+  <div fxLayoutAlign="row" fxLayoutGap="8px" fxLayoutAlign="start start" class="button-area-wrapper">
+    <button  mat-stroked-button class="save-button">Reset</button>
+    <button  mat-stroked-button class="save-button">Save to Favorites</button>
+  </div>
 </div>
 
 <style>
+
+  .button-area-wrapper{
+    width:100%
+  }
 
   .wrapper{
     padding-left:12px;
@@ -34,6 +43,12 @@
   mat-form-field{
     margin-top:10px;
     width:100%
+  }
+
+  .save-button{
+    background-color: white;
+    border: 1px solid #1D4CF2;
+    color: #1D4CF2;
   }
 
 </style>
