@@ -1,23 +1,29 @@
-
-<div class="display-area" [ngStyle]="{
+<div fxLayout="column" fxLayoutAlign="center center" class="wrapper">
+  <div class="display-area" [ngStyle]="{
   'font-family': $fontFamily | async,
   'font-size.px':$fontSize | async,
   'color':$fontColor|async,
   'background-color':$bgColor|async
   }"  fxLayoutAlign="center center">
-  <div id="displayText" class="display-text">{{$previewText | async}}</div>
+    <div id="displayText" class="display-text">{{$previewText | async}}</div>
+  </div>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
+  </mat-form-field>
 </div>
-<mat-form-field>
-  <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
-</mat-form-field>
 
 <style>
 
+  .wrapper{
+    padding-left:12px;
+    padding-right:12px;
+  }
+
   .display-area{
     width:100%;
-    height:250px;
-    border: #323232 1px solid;
-    border-radius: 10px;
+    height:280px;
+    border: #C4C4C4 1px solid;
+    border-radius: 16px;
   }
 
   .display-text{

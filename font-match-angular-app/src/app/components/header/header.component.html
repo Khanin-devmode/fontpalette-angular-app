@@ -1,12 +1,32 @@
 <mat-toolbar fxLayoutGap="10px">
-  <img src="assets/logo/logo.svg" class="header-logo">
-  <span>Fontmatch.design</span>
+<!--  <img src="assets/logo/logo.svg" class="header-logo">-->
+  <span class="font-logo primary-color">Fontmatch<span>.design</span></span>
   <span fxFlex="1 1 auto"></span>
-  <span>About</span>
+  <span class="header-button">Generate</span>
+  <span class="header-button">Explore</span>
+  <span class="header-button">Favorite</span>
+  <span class="header-button">Feedback</span>
 <!--  <mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">verified_user</mat-icon>-->
 </mat-toolbar>
 
 <style>
+
+  .font-logo{
+    font-family: Pacifico;
+    font-weight:normal;
+    font-size: 24px;
+  }
+
+  .font-logo span{
+    font-family: Roboto;
+  }
+
+  .header-button{
+    width: 80px;
+    font-weight:normal;
+    color: #1D4CF2;
+    cursor: pointer;
+  }
 
   mat-toolbar{
     font-size: 16px;
