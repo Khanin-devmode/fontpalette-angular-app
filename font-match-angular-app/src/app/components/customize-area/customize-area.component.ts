@@ -27,6 +27,8 @@ export class CustomizeAreaComponent implements OnInit {
 
   fontSizeListMenu = [8,12,14,20,24,32,40,64,96,120,184,280];
 
+  tempPalette= ['#5288F0','#99D0B9','#CAE2A2','#C15771','#FC8C8C'];
+
   public arrayColors: any = {
     bgColor: initialState.selectedBgColor,
     fontColor: initialState.selectedFontColor,

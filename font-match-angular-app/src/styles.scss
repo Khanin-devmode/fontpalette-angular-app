@@ -38,6 +38,11 @@ $font-match-angular-app-theme: mat-light-theme((
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+//Global black
+body{
+  color:#444444
+}
+
 .primary-color{
   color: #1D4CF2;
 }

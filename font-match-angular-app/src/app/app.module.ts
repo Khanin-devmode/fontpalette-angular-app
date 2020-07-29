@@ -28,6 +28,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {ColorPickerModule} from "ngx-color-picker";
 import { BgSelectionAreaComponent } from './components/bg-selection-area/bg-selection-area.component';
 import { BgCardComponent } from './components/bg-card/bg-card.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { BgCardComponent } from './components/bg-card/bg-card.component';
     MatMenuModule,
     ScrollingModule,
     MatGridListModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatSelectModule,
+    MatButtonToggleModule
 
   ],
   providers: [],

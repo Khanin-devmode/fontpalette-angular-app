@@ -1,49 +1,193 @@
-<mat-tab-group dynamicHeight animationDuration="800" mat-align-tabs="center" (selectedIndexChange)="navChildOutlet($event)">
-  <mat-tab label="Font">
-    {{$selectedFont | async}}
-    <div class="font-size-container" fxLayout="row">
-      <button mat-button [matMenuTriggerFor]="fontSizeMenu">{{$fontSize|async}}px
-        <mat-icon>arrow_drop_down</mat-icon>
-      </button>
-      <div fxFlex="auto">
-        <mat-slider min="8" max="300" step="1" value="{{$fontSize|async}}"
-                    (input)="updateFontSize($event.value)"></mat-slider>
-      </div>
+<div class="wrapper">
+  <div class="area-label">Frame style</div>
+  <div fxLayout="row" fxLayoutGap="8px" class="frame-button-wrapper">
+    <button mat-stroked-button class="frame-button"><mat-icon>crop_16_9</mat-icon>16:9</button>
+    <button mat-stroked-button class="frame-button"><mat-icon>crop_square</mat-icon>Square</button>
+    <button mat-stroked-button class="frame-button"><mat-icon>radio_button_unchecked</mat-icon>Circle</button>
+  </div>
+  <div class="area-label row-mt">Color Palette</div>
+  <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
+    <mat-form-field appearance="outline">
+      <mat-select [value]="5">
+        <mat-option [value]="5">5 colors</mat-option>
+        <mat-option [value]="4">4 colors</mat-option>
+        <mat-option [value]="3">3 colors</mat-option>
+        <mat-option [value]="2">2 colors</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="palette-wrapper" fxLayout="row">
+      <div class="palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
     </div>
-      <span [style.background]="arrayColors.fontColor"
-            [cpToggle]="true"
-            [cpDialogDisplay]="'inline'"
-            [(colorPicker)]="arrayColors.fontColor"
-            (colorPickerChange)="updateFontColor()"
-      ></span>
+  </div>
 
-  </mat-tab>
-  <mat-tab label="Background" routerLink="/bg-select">Background
-      <span [style.background]="arrayColors.bgColor"
-            [cpToggle]="true"
-            [cpDialogDisplay]="'inline'"
-            [(colorPicker)]="arrayColors.bgColor"
-            (colorPickerChange)="updateBgColor()"
-            [cpWidth]="400"
-      ></span>
-  </mat-tab>
-</mat-tab-group>
+  <div class="area-label row-mt">Text</div>
+  <div fxLayout="row" class="row-mt" fxLayoutGap="12px">
+    <div class="text-custom-area1" fxFlex="50" fxLayout="row" fxLayoutAlign="space-between start">
+      <div class=font-color-display [ngStyle]="{'background-color':tempPalette[0]}"></div>
+      <mat-button-toggle-group name="formatAlign" aria-label="Font Style">
+        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field appearance="outline" fxFlex="50">
+      <mat-select [value]="'Roboto'">
+        <mat-option [value]="'Roboto'">Roboto</mat-option>
+        <mat-option [value]="4">4 colors</mat-option>
+        <mat-option [value]="3">3 colors</mat-option>
+        <mat-option [value]="2">2 colors</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-<mat-menu #fontSizeMenu="matMenu" xPosition="before" class="font-size-menu">
-  <button mat-menu-item *ngFor="let fontSize of fontSizeListMenu" (click)="updateFontSize(fontSize)">
-    <span>{{fontSize}}</span>
-  </button>
-</mat-menu>
+  </div>
+  <div fxLayout="row" fxLayoutGap="12px">
+    <mat-form-field appearance="outline" fxFlex="50">
+      <mat-select [value]="'bold'">
+        <mat-option [value]="'bold'">Bold</mat-option>
+        <mat-option [value]="4">4 colors</mat-option>
+        <mat-option [value]="3">3 colors</mat-option>
+        <mat-option [value]="2">2 colors</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" fxFlex="50">
+      <mat-select [value]="40">
+        <mat-option [value]="40">40 px</mat-option>
+        <mat-option [value]="4">4 colors</mat-option>
+        <mat-option [value]="3">3 colors</mat-option>
+        <mat-option [value]="2">2 colors</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div class="area-label row-mt">Background</div>
+  <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
+    <mat-form-field appearance="outline">
+      <mat-select [value]="5">
+        <mat-option [value]="5">Solid</mat-option>
+        <mat-option [value]="4">4 colors</mat-option>
+        <mat-option [value]="3">3 colors</mat-option>
+        <mat-option [value]="2">2 colors</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="palette-wrapper" fxLayout="row">
+      <div class="palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
+    </div>
+  </div>
+</div>
+
+<!--<mat-tab-group dynamicHeight animationDuration="800" mat-align-tabs="center" (selectedIndexChange)="navChildOutlet($event)">-->
+<!--  <mat-tab label="Font">-->
+<!--    {{$selectedFont | async}}-->
+<!--    <div class="font-size-container" fxLayout="row">-->
+<!--      <button mat-button [matMenuTriggerFor]="fontSizeMenu">{{$fontSize|async}}px-->
+<!--        <mat-icon>arrow_drop_down</mat-icon>-->
+<!--      </button>-->
+<!--      <div fxFlex="auto">-->
+<!--        <mat-slider min="8" max="300" step="1" value="{{$fontSize|async}}"-->
+<!--                    (input)="updateFontSize($event.value)"></mat-slider>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--      <span [style.background]="arrayColors.fontColor"-->
+<!--            [cpToggle]="true"-->
+<!--            [cpDialogDisplay]="'inline'"-->
+<!--            [(colorPicker)]="arrayColors.fontColor"-->
+<!--            (colorPickerChange)="updateFontColor()"-->
+<!--      ></span>-->
+
+<!--  </mat-tab>-->
+<!--  <mat-tab label="Background" routerLink="/bg-select">Background-->
+<!--      <span [style.background]="arrayColors.bgColor"-->
+<!--            [cpToggle]="true"-->
+<!--            [cpDialogDisplay]="'inline'"-->
+<!--            [(colorPicker)]="arrayColors.bgColor"-->
+<!--            (colorPickerChange)="updateBgColor()"-->
+<!--            [cpWidth]="400"-->
+<!--      ></span>-->
+<!--  </mat-tab>-->
+<!--</mat-tab-group>-->
+
+<!--<mat-menu #fontSizeMenu="matMenu" xPosition="before" class="font-size-menu">-->
+<!--  <button mat-menu-item *ngFor="let fontSize of fontSizeListMenu" (click)="updateFontSize(fontSize)">-->
+<!--    <span>{{fontSize}}</span>-->
+<!--  </button>-->
+<!--</mat-menu>-->
 
 <style>
 
-  .select-font-color-wrapper{
-    height:200px
+  mat-button-toggle mat-icon{
+    margin:0 4px 0 4px;
   }
 
-  .mat-slider-horizontal {
-    width: 100%
+  .font-color-display{
+    width:50px;
+    height:50px;
+    border-radius: 8px;
   }
+
+  .palette-wrapper{
+    height:fit-content;
+  }
+
+  .palette-wrapper :first-child{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .palette-wrapper :last-child{
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .palette-color{
+    background-color: #757575;
+    width:50px;
+    height:50px;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix{
+    padding:8px 0 1em 0;
+  }
+
+  .mat-select-arrow-wrapper{
+    padding-top:8px;
+  }
+
+  .row-mt{
+    margin-top:12px;
+  }
+
+  mat-icon{
+    margin-right:8px;
+  }
+
+  .wrapper{
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .area-label{
+    font-size:20px;
+    font-weight: 500;
+  }
+
+  .frame-button-wrapper{
+    margin-top:12px;
+  }
+
+  .frame-button{
+    /*font-size:18px;*/
+    color: #444444;
+    font-weight: normal;
+  }
+
+/*  .select-font-color-wrapper{*/
+/*    height:200px*/
+/*  }*/
+
+/*  .mat-slider-horizontal {*/
+/*    width: 100%*/
+/*  }*/
 
   .font-size-container {
     margin-top: 5px;
