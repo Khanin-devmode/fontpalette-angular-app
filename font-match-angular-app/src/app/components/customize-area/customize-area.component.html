@@ -8,12 +8,18 @@
   <div class="area-label row-mt">Color Palette</div>
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
     <mat-form-field appearance="outline">
-      <mat-select [value]="5">
-        <mat-option [value]="5">5 colors</mat-option>
-        <mat-option [value]="4">4 colors</mat-option>
-        <mat-option [value]="3">3 colors</mat-option>
-        <mat-option [value]="2">2 colors</mat-option>
-      </mat-select>
+<!--      <mat-select [value]="5">-->
+<!--        <mat-option [value]="5">5 colors</mat-option>-->
+<!--        <mat-option [value]="4">4 colors</mat-option>-->
+<!--        <mat-option [value]="3">3 colors</mat-option>-->
+<!--        <mat-option [value]="2">2 colors</mat-option>-->
+<!--      </mat-select>-->
+            <select matNativeControl [value]="5">
+              <option [value]="5">5 colors</option>
+              <option [value]="4">4 colors</option>
+              <option [value]="3">3 colors</option>
+              <option [value]="2">2 colors</option>
+            </select>
     </mat-form-field>
     <div class="palette-wrapper" fxLayout="row">
       <div class="palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
