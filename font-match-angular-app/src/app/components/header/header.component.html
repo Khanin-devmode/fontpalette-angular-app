@@ -1,5 +1,8 @@
 <mat-toolbar fxLayoutGap="10px">
 <!--  <img src="assets/logo/logo.svg" class="header-logo">-->
+  <button mat-icon-button class="menu-button" fxHide fxShow.lt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
   <div class="font-logo primary-color">Fontmatch<span>.design</span></div>
   <span fxFlex="1 1 auto"></span>
   <div fxHide.xs>
@@ -25,13 +28,20 @@
 
 <style>
 
+  .menu-button{
+    margin:0;
+  }
+
+  .menu-button mat-icon{
+    margin:0;
+  }
+
   .header-col1{
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     height:49px
   }
 
   .font-logo{
-    margin:12px 0 0 12px;
     font-family: Pacifico;
     font-weight:normal;
     font-size: 24px;
@@ -49,6 +59,7 @@
   }
 
   mat-toolbar{
+    height:56px;
     font-size: 16px;
   }
   .header-logo{

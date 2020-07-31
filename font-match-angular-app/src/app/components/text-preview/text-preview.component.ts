@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {AppState, initialState} from "../../+store/fontmatch.reducer";
@@ -7,7 +7,7 @@ import {updateText} from "../../+store/fontmatch.actions";
 @Component({
   selector: 'app-text-preview',
   templateUrl: './text-preview.component.html',
-  styleUrls: ['./text-preview.component.scss']
+  styleUrls: ['./text-preview.component.scss'],
 })
 
 export class TextPreviewComponent{

@@ -30,6 +30,8 @@ import { BgSelectionAreaComponent } from './components/bg-selection-area/bg-sele
 import { BgCardComponent } from './components/bg-card/bg-card.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatGridListModule,
     ColorPickerModule,
     MatSelectModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSidenavModule,
+    MatListModule
 
   ],
   providers: [],

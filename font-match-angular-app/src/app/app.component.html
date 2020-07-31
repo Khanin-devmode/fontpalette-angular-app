@@ -1,2 +1,78 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<!--<app-header></app-header>-->
+<mat-toolbar fxLayoutGap="10px">
+  <!--  <img src="assets/logo/logo.svg" class="header-logo">-->
+  <button mat-icon-button class="menu-button" (click)="sNav.toggle()" fxHide fxShow.lt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div class="font-logo primary-color">Fontmatch<span>.design</span></div>
+  <span fxFlex="1 1 auto"></span>
+  <div fxHide.xs>
+    <button mat-flat-button class="header-button">Generate</button>
+    <button mat-flat-button class="header-button">Explore</button>
+    <button mat-flat-button class="header-button">Favorite</button>
+    <button mat-flat-button class="header-button">Feedback</button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sNav [mode]="'over'">
+    <mat-nav-list>
+      <a mat-list-item>Generate</a>
+      <a mat-list-item>Explore</a>
+      <a mat-list-item>Favourite</a>
+      <a mat-list-item>Feedback</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+<style>
+
+  .menu-button{
+    margin:0;
+  }
+
+  .menu-button mat-icon{
+    margin:0;
+  }
+
+  .header-col1{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    height:49px
+  }
+
+  .font-logo{
+    font-family: Pacifico;
+    font-weight:normal;
+    font-size: 24px;
+  }
+
+  .font-logo span{
+    font-family: Roboto;
+  }
+
+  .header-button{
+    width: 80px;
+    font-weight:normal;
+    color: #1D4CF2;
+    cursor: pointer;
+  }
+
+  mat-toolbar{
+    height:56px;
+    font-size: 16px;
+  }
+  .header-logo{
+    width: 48px;
+    height: 48px;
+  }
+
+  mat-toolbar{
+    background-color: white;
+    border-bottom: #b0b0b0 1px solid;
+  }
+</style>

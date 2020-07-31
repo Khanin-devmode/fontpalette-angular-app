@@ -7,11 +7,14 @@
   }"  fxLayoutAlign="center center">
     <div id="displayText" class="display-text">{{$previewText | async}}</div>
   </div>
+
+  <div class="spacer"></div>
+
   <mat-form-field appearance="outline">
     <mat-label>Your text</mat-label>
     <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
   </mat-form-field>
-  <div fxLayoutAlign="row" fxLayoutGap="8px" fxLayoutAlign="start start" class="button-area-wrapper">
+  <div fxLayoutAlign="row" fxLayoutGap="8px" fxLayoutAlign="start start" class="button-area-wrapper white-mt">
     <button  mat-stroked-button class="save-button">Reset</button>
     <button  mat-stroked-button class="save-button">Save to Favorites</button>
   </div>
@@ -24,8 +27,7 @@
   }
 
   .wrapper{
-    padding-left:12px;
-    padding-right:12px;
+    padding:0;
   }
 
   .display-area{
@@ -49,6 +51,15 @@
     background-color: white;
     border: 1px solid #1D4CF2;
     color: #1D4CF2;
+  }
+
+  .white-mt{
+    margin-top:8px
+  }
+
+  .spacer{
+    height: 12px;
+    width:100%
   }
 
 </style>
