@@ -3,6 +3,7 @@ import {Store} from "@ngrx/store";
 import {AppState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
 import {AppUtilService} from "../../app.util.service";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
 @Component({
   selector: 'app-font-selection-area',
@@ -22,7 +23,8 @@ export class FontSelectionAreaComponent implements OnInit {
   $selectedFont:Observable<string>;
 
   constructor(private store:Store<AppState>,
-              public util:AppUtilService
+              public util:AppUtilService,
+              public breakpointObserver:BreakpointObserver
 
   ) {
 
@@ -32,6 +34,8 @@ export class FontSelectionAreaComponent implements OnInit {
     this.$fontColor = this.store.select(state=>state.fontMatch.selectedFontColor);
     this.$selectedBgColor = this.store.select(state=>state.fontMatch.selectedBgColor);
     this.$selectedFont = this.store.select(state => state.fontMatch.selectedFontFamily)
+
+
   }
 
   ngOnInit(): void {

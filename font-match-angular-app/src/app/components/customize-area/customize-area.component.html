@@ -28,8 +28,6 @@
   <div class="row-mt palette-wrapper" fxLayout="row">
     <div class="md-palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
   </div>
-<!--  <div class="row-mt font-color-display" [ngStyle]="{'background-color':tempPalette[0]}"></div>-->
-
 
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
 
@@ -49,18 +47,6 @@
       </mat-button-toggle-group>
     </div>
 
-
-    <!--    <mat-form-field appearance="outline">-->
-    <!--      <mat-select [value]="5">-->
-    <!--        <mat-option [value]="5">Solid</mat-option>-->
-    <!--        <mat-option [value]="4">4 colors</mat-option>-->
-    <!--        <mat-option [value]="3">3 colors</mat-option>-->
-    <!--        <mat-option [value]="2">2 colors</mat-option>-->
-    <!--      </mat-select>-->
-    <!--    </mat-form-field>-->
-    <!--    <div class="palette-wrapper" fxLayout="row">-->
-    <!--      <div class="palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>-->
-    <!--    </div>-->
   </div>
 
   <div fxLayout="row" fxLayoutAlign="space-between start">
@@ -92,69 +78,13 @@
     <div class="palette-wrapper" fxLayout="row">
       <div class="md-palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
     </div>
-<!--    <div class=font-color-display [ngStyle]="{'background-color':tempPalette[0]}"></div>-->
-
-<!--    <mat-form-field appearance="outline">-->
-<!--      <mat-select [value]="5">-->
-<!--        <mat-option [value]="5">Solid</mat-option>-->
-<!--        <mat-option [value]="4">4 colors</mat-option>-->
-<!--        <mat-option [value]="3">3 colors</mat-option>-->
-<!--        <mat-option [value]="2">2 colors</mat-option>-->
-<!--      </mat-select>-->
-<!--    </mat-form-field>-->
-<!--    <div class="palette-wrapper" fxLayout="row">-->
-<!--      <div class="palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>-->
-<!--    </div>-->
   </div>
 </div>
-
-<!--<mat-tab-group dynamicHeight animationDuration="800" mat-align-tabs="center" (selectedIndexChange)="navChildOutlet($event)">-->
-<!--  <mat-tab label="Font">-->
-<!--    {{$selectedFont | async}}-->
-<!--    <div class="font-size-container" fxLayout="row">-->
-<!--      <button mat-button [matMenuTriggerFor]="fontSizeMenu">{{$fontSize|async}}px-->
-<!--        <mat-icon>arrow_drop_down</mat-icon>-->
-<!--      </button>-->
-<!--      <div fxFlex="auto">-->
-<!--        <mat-slider min="8" max="300" step="1" value="{{$fontSize|async}}"-->
-<!--                    (input)="updateFontSize($event.value)"></mat-slider>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--      <span [style.background]="arrayColors.fontColor"-->
-<!--            [cpToggle]="true"-->
-<!--            [cpDialogDisplay]="'inline'"-->
-<!--            [(colorPicker)]="arrayColors.fontColor"-->
-<!--            (colorPickerChange)="updateFontColor()"-->
-<!--      ></span>-->
-
-<!--  </mat-tab>-->
-<!--  <mat-tab label="Background" routerLink="/bg-select">Background-->
-<!--      <span [style.background]="arrayColors.bgColor"-->
-<!--            [cpToggle]="true"-->
-<!--            [cpDialogDisplay]="'inline'"-->
-<!--            [(colorPicker)]="arrayColors.bgColor"-->
-<!--            (colorPickerChange)="updateBgColor()"-->
-<!--            [cpWidth]="400"-->
-<!--      ></span>-->
-<!--  </mat-tab>-->
-<!--</mat-tab-group>-->
-
-<!--<mat-menu #fontSizeMenu="matMenu" xPosition="before" class="font-size-menu">-->
-<!--  <button mat-menu-item *ngFor="let fontSize of fontSizeListMenu" (click)="updateFontSize(fontSize)">-->
-<!--    <span>{{fontSize}}</span>-->
-<!--  </button>-->
-<!--</mat-menu>-->
 
 <style>
 
   mat-button-toggle mat-icon{
     margin:0 4px 0 4px;
-  }
-
-  .font-color-display{
-    width:48px;
-    height:48px;
-    border-radius: 8px;
   }
 
   .palette-wrapper{
@@ -219,26 +149,9 @@
   }
 
   .frame-button{
-    /*font-size:18px;*/
     color: #444444;
     font-weight: normal;
   }
 
-/*  .select-font-color-wrapper{*/
-/*    height:200px*/
-/*  }*/
-
-/*  .mat-slider-horizontal {*/
-/*    width: 100%*/
-/*  }*/
-
-  .font-size-container {
-    margin-top: 5px;
-  }
-
-  .font-size-menu {
-    min-width: 90px !important;
-    max-height: 250px !important;
-  }
 
 </style>

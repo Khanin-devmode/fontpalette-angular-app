@@ -1,12 +1,11 @@
 <div class="row-container" fxLayout="row">
-  <font-card fxFlex="33" *ngFor="let font of fontGroup"
+  <font-card *ngFor="let font of fontGroup" fxFlex="{{100/fontGroup.length}}"
              [fontFamily]="font.family"
              [fontSize]="fontSize"
              [displayText]="displayText"
              [fontColor]="fontColor"
              [selectedBgColor]="selectedBgColor"
              [selectedFont]="selectedFont"
-
 
   ></font-card>
 </div>
