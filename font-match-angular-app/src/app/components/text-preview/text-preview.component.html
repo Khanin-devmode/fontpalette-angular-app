@@ -2,8 +2,9 @@
   <div class="display-area" [ngStyle]="{
   'font-family': $fontFamily | async,
   'font-size.px':$fontSize | async,
-  'color':$fontColor|async,
-  'background-color':$bgColor|async
+
+  'color':($activePalette|async)[$fontColorIndex|async],
+  'background-color':($activePalette|async)[$bgColorIndex|async]
   }"  fxLayoutAlign="center center">
     <div id="displayText" class="display-text">{{$previewText | async}}</div>
   </div>

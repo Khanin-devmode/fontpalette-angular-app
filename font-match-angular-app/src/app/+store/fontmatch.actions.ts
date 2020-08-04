@@ -13,3 +13,4 @@ export const updateCompColor = createAction('UPDATE_COMP_COLOR',props<{compColor
 export const fetchGoogleFontStart = createAction('FETCH_GOOGLE_FONTS_START')
 export const fetchGoogleFontSuccess = createAction('FETCH_GOOGLE_FONTS_SUCCESS',props<{fontList:{}[]}>())
 export const fetchGoogleFontError = createAction('FETCH_GOOGLE_FONTS_ERROR')
+export const updateActivePalette = createAction('UPDATE_ACTIVE_PALETTE',props<{colorPalette:string[]}>())

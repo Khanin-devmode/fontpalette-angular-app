@@ -3,6 +3,7 @@ import {Store} from "@ngrx/store";
 import {AppState, initialState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
 import {
+  updateActivePalette,
   updateCompColor,
   updateFontColor,
   updateFontSize,
@@ -29,7 +30,7 @@ export class CustomizeAreaComponent implements OnInit {
 
   tempPalette= ['#5288F0','#99D0B9','#CAE2A2','#C15771','#FC8C8C'];
 
-  public arrayColors: any = {
+  arrayColors: any = {
     bgColor: initialState.selectedBgColor,
     fontColor: initialState.selectedFontColor,
   };
@@ -56,6 +57,12 @@ export class CustomizeAreaComponent implements OnInit {
 
   updateFontSize(fontSize:number){
     this.store.dispatch(updateFontSize({inputFontSize:fontSize}));
+  }
+
+  updatePalette(){
+    console.log('changing color');
+    console.log(this.tempPalette);
+    this.store.dispatch(updateActivePalette({colorPalette:this.tempPalette}))
   }
 
   updateBgColor(){

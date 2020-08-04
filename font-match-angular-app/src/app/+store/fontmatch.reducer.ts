@@ -1,6 +1,6 @@
 import {createReducer, on} from '@ngrx/store';
 import {
-  fetchGoogleFontSuccess, selectFont, updateCompColor,
+  fetchGoogleFontSuccess, selectFont, updateActivePalette, updateCompColor,
   updateFontColor,
   updateFontSize, updateMonoBgColors,
   updatePreviewBg, updateSplitCompColors, updateTetradColors,
@@ -19,6 +19,9 @@ export interface FontMatch {
   triadColors:string[]
   tetradColors:string[]
   compColor:string
+  activePalette:string[];
+  fontColorIndex:number;
+  bgColorIndex:number;
 }
 
 export interface AppState {
@@ -36,7 +39,10 @@ export const initialState:FontMatch = {
   splitCompColors:[],
   triadColors:[],
   tetradColors:[],
-  compColor:''
+  compColor:'',
+  activePalette:['#5288F0','#99D0B9','#CAE2A2','#C15771','#FC8C8C'],
+  fontColorIndex:0,
+  bgColorIndex:1,
 
 };
 
@@ -52,6 +58,7 @@ const _fontMatchReducer = createReducer(initialState,
   on(updateTetradColors, (state, {tetradColors}) => ({...state, tetradColors: tetradColors})),
   on(updateCompColor, (state, {compColor}) => ({...state, compColor: compColor})),
   on(updateFontColor, (state,{fontColor}) => ({...state, selectedFontColor: fontColor})),
+  on(updateActivePalette, (state,{colorPalette}) => ({...state, activePalette: colorPalette})),
 );
 
 export function fontMatchReducer(state, action) {

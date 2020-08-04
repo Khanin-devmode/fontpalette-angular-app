@@ -15,15 +15,17 @@ export class TextPreviewComponent{
   $previewText:Observable<string>;
   $fontFamily:Observable<string>;
   $fontSize:Observable<number>;
-  $fontColor:Observable<string>;
-  $bgColor:Observable<string>;
+  $activePalette:Observable<string[]>;
+  $fontColorIndex:Observable<number>;
+  $bgColorIndex:Observable<number>
 
   constructor(private  store:Store<AppState>) {
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
     this.$fontFamily = this.store.select(state => state.fontMatch.selectedFontFamily)
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
-    this.$fontColor = this.store.select(state => state.fontMatch.selectedFontColor);
-    this.$bgColor = this.store.select(state => state.fontMatch.selectedBgColor);
+    this.$activePalette = this.store.select(state=>state.fontMatch.activePalette);
+    this.$fontColorIndex = this.store.select(state=>state.fontMatch.fontColorIndex);
+    this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
   }
 
   updateText(e){
