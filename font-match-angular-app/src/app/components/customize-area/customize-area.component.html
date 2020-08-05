@@ -11,20 +11,32 @@
 <!--    NOTE: FOLLOWING CODE IS WAY TO GO BUT BUG WITH COLOR PICKER, HAVE TO DO MANUAL ITERATION INSTEAD-->
 <!--    <div class="palette-container" fxLayout="row row-mb">-->
 <!--      <div class="palette-color"-->
-<!--           *ngFor="let color of tempPalette; let i = index"-->
-<!--           [(colorPicker)]="tempPalette[i]"-->
+<!--           *ngFor="let color of arrayPalette; let i = index"-->
+<!--           [(colorPicker)]="arrayPalette[i]"-->
 <!--           [cpPosition]="'bottom'"-->
-<!--           [style.background]="tempPalette[i]"-->
+<!--           [style.background]="arrayPalette[i]"-->
 <!--      ></div>-->
 <!--    </div>-->
 
     <div class="palette-container" fxLayout="row row-mb">
-      <div class="palette-color" [(colorPicker)]="tempPalette[0]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':tempPalette[0]}" ></div>
-      <div class="palette-color" [(colorPicker)]="tempPalette[1]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':tempPalette[1]}" ></div>
-      <div class="palette-color" [(colorPicker)]="tempPalette[2]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':tempPalette[2]}" ></div>
-      <div class="palette-color" [(colorPicker)]="tempPalette[3]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':tempPalette[3]}" ></div>
-      <div class="palette-color" [(colorPicker)]="tempPalette[4]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':tempPalette[4]}" ></div>
+      <div class="palette-color" [(colorPicker)]="arrayPalette[0]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':arrayPalette[0]}" ></div>
+      <div class="palette-color" [(colorPicker)]="arrayPalette[1]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':arrayPalette[1]}" ></div>
+      <div class="palette-color" [(colorPicker)]="arrayPalette[2]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':arrayPalette[2]}" ></div>
+      <div class="palette-color" [(colorPicker)]="arrayPalette[3]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':arrayPalette[3]}" ></div>
+      <div class="palette-color" [(colorPicker)]="arrayPalette[4]" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':arrayPalette[4]}" ></div>
     </div>
+
+<!--    <div class="palette-container" fxLayout="row row-mb">-->
+<!--      <div class="palette-color" [(colorPicker)]="objPalette.color1" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':objPalette.color1}" ></div>-->
+<!--      <div class="palette-color" [(colorPicker)]="objPalette.color2" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':objPalette.color2}" ></div>-->
+<!--      <div class="palette-color" [(colorPicker)]="objPalette.color3" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':objPalette.color3}" ></div>-->
+<!--      <div class="palette-color" [(colorPicker)]="objPalette.color4" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':objPalette.color4}" ></div>-->
+<!--      <div class="palette-color" [(colorPicker)]="objPalette.color5" (colorPickerChange)="updatePalette()" [cpPosition]="'bottom'" [ngStyle]="{'background-color':objPalette.color5}" ></div>-->
+<!--    </div>-->
+
+    <div class="palette-color" [(colorPicker)]="tempPalette.color1" (colorPickerChange)="updateFontColor()" [ngStyle]="{'background-color':tempPalette.color1}"></div>
+
+
 
     <mat-form-field appearance="outline" fxFlex="48">
       <mat-select [value]="5">
@@ -40,7 +52,7 @@
   <div class="area-label row-mt">Text</div>
 
   <div class="row-mt palette-container" fxLayout="row">
-    <div class="md-palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
+    <div class="md-palette-color" *ngFor="let color of arrayPalette;let i = index" (click)="selectFontColor(i)" [ngStyle]="{'background-color':color}" [class.selected-color]="i == ($fontColorIndex | async)"></div>
   </div>
 
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
@@ -100,7 +112,7 @@
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
 
     <div class="palette-container" fxLayout="row">
-      <div class="md-palette-color" *ngFor="let color of tempPalette" [ngStyle]="{'background-color':color}" ></div>
+      <div class="md-palette-color" *ngFor="let color of arrayPalette; let i = index" (click)="selectBgColor(i)" [ngStyle]="{'background-color':color}" [class.selected-color]="i == ($bgColorIndex | async)"></div>
     </div>
   </div>
 </div>
@@ -177,5 +189,8 @@
     font-weight: normal;
   }
 
+  .selected-color{
+    border: black 1px solid;
+  }
 
 </style>

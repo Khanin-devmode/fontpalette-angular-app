@@ -15,17 +15,26 @@ export class TextPreviewComponent{
   $previewText:Observable<string>;
   $fontFamily:Observable<string>;
   $fontSize:Observable<number>;
-  $activePalette:Observable<string[]>;
+  $activeArrayPalette:Observable<string[]>;
   $fontColorIndex:Observable<number>;
-  $bgColorIndex:Observable<number>
+  $bgColorIndex:Observable<number>;
+  $fontColor:Observable<string>
+
+  $activeObjPalette:Observable<{}>
+  $fontColorMap:Observable<string>
+  $bgColorMap:Observable<string>
 
   constructor(private  store:Store<AppState>) {
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
     this.$fontFamily = this.store.select(state => state.fontMatch.selectedFontFamily)
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
-    this.$activePalette = this.store.select(state=>state.fontMatch.activePalette);
+    this.$activeArrayPalette = this.store.select(state=>state.fontMatch.arrayPalette);
     this.$fontColorIndex = this.store.select(state=>state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
+    this.$fontColor = this.store.select(state => state.fontMatch.color1);
+    this.$activeObjPalette = this.store.select(state=>state.fontMatch.objPalette);
+    this.$fontColorMap = this.store.select(state => state.fontMatch.fontColorMap);
+    this.$bgColorMap = this.store.select(state => state.fontMatch.bgColorMap);
   }
 
   updateText(e){

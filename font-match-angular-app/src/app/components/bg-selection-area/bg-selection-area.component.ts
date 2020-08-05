@@ -24,7 +24,7 @@ export class BgSelectionAreaComponent implements OnInit {
 
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
     this.$selectedFontFamily = this.store.select(state => state.fontMatch.selectedFontFamily);
-    this.$selectedFontColor = this.store.select(state => state.fontMatch.selectedFontColor);
+    this.$selectedFontColor = this.store.select(state => state.fontMatch.color1);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
 
     this.$monoColor = this.store.select(state => state.fontMatch.monoBgColor);

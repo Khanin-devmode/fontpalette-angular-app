@@ -6,8 +6,8 @@
                     [fontGroup]="fontGroup"
                     [displayText]="$displayText | async"
                     [fontSize]="$fontSize | async"
-                    [fontColor]="$fontColor | async"
-                    [selectedBgColor]="$selectedBgColor | async"
+                    [fontColor]="($arrayPalette | async)[$fontColorIndex|async]"
+                    [selectedBgColor]="($arrayPalette | async)[$bgColorIndex|async]"
                     [selectedFont]="$selectedFont | async"
 
       ></app-card-row>

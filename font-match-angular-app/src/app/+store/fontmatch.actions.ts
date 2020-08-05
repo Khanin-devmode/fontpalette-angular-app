@@ -1,4 +1,5 @@
 import {createAction, props} from '@ngrx/store';
+import {ColorPalette, FontMatch} from "./fontmatch.reducer";
 
 export const updateText = createAction('UPDATE_TEXT',props<{inputText:string}>());
 export const selectFont = createAction('SELECT_FONT',props<{fontFamily:string}>());
@@ -14,3 +15,8 @@ export const fetchGoogleFontStart = createAction('FETCH_GOOGLE_FONTS_START')
 export const fetchGoogleFontSuccess = createAction('FETCH_GOOGLE_FONTS_SUCCESS',props<{fontList:{}[]}>())
 export const fetchGoogleFontError = createAction('FETCH_GOOGLE_FONTS_ERROR')
 export const updateActivePalette = createAction('UPDATE_ACTIVE_PALETTE',props<{colorPalette:string[]}>())
+// export const updateActivePalette = createAction('UPDATE_ACTIVE_PALETTE')
+// export const updateObjPalette = createAction('UPDATE_OBJ_PALETTE')
+export const updateObjPalette = createAction('UPDATE_OBJ_PALETTE',props<{newPalette:ColorPalette}>())
+export const selectFontColor = createAction('SELECT_FONT_COLOR',props<{colorIndex:number}>())
+export const selectBgColor = createAction('SELEECT_BG_COLOR',props<{colorIndex:number}>())
