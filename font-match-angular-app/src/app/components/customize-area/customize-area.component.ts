@@ -45,7 +45,7 @@ export class CustomizeAreaComponent implements OnInit {
     this.store.dispatch(updateFontSize({inputFontSize:fontSize}));
   }
 
-  updatePalette(e,i){
+  updatePalette(e,i:number){
     this.store.dispatch(updateArrayPalette({color:e,index:i}));
   }
 

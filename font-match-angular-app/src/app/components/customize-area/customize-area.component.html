@@ -38,10 +38,14 @@
 
   </div>
 
-  <div class="area-label row-mt">Text</div>
+  <div class="area-label row-mt">
+    Text
+  </div>
 
   <div class="row-mt palette-container" fxLayout="row">
-    <div class="md-palette-color" *ngFor="let color of $arrayPalette|async;let i = index" (click)="selectFontColor(i)" [ngStyle]="{'background-color':color}" [class.selected-color]="i == ($fontColorIndex | async)"></div>
+    <div class="md-palette-color" *ngFor="let color of $arrayPalette|async;let i = index" (click)="selectFontColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}" [class.selected-color]="i == ($fontColorIndex | async)"></div>
+    <input [hidden]="true" #fontIndex [value]="($fontColorIndex | async)" type="number" />
+    <mat-icon *ngIf="($arrayPalette|async)[$fontColorIndex|async] as fontColor" [ngStyle]="{'color':fontColor}" [colorPicker]="fontColor" (colorPickerChange)="updatePalette($event,fontIndex.valueAsNumber)">edit</mat-icon>
   </div>
 
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
@@ -97,11 +101,15 @@
     </div>
   </div>
 
-  <div class="area-label row-mt">Background</div>
+  <div class="area-label row-mt">
+    Background
+  </div>
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
 
     <div class="palette-container" fxLayout="row">
-      <div class="md-palette-color" *ngFor="let color of $arrayPalette|async; let i = index" (click)="selectBgColor(i)" [ngStyle]="{'background-color':color}" [class.selected-color]="i == ($bgColorIndex | async)"></div>
+      <div class="md-palette-color" *ngFor="let color of $arrayPalette|async; let i = index" (click)="selectBgColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}" [class.selected-color]="i == ($bgColorIndex | async)"></div>
+      <input [hidden]="true" #bgIndex [value]="($bgColorIndex | async)" type="number" />
+      <mat-icon *ngIf="($arrayPalette|async)[$bgColorIndex|async] as bgColor" [ngStyle]="{'color':bgColor}" [colorPicker]="bgColor" (colorPickerChange)="updatePalette($event,bgIndex.valueAsNumber)">edit</mat-icon>
     </div>
   </div>
 </div>
@@ -179,7 +187,7 @@
   }
 
   .selected-color{
-    border: black 1px solid;
+    border: black 2px solid !important;
   }
 
 </style>
