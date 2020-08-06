@@ -4,7 +4,7 @@ import {AppState, ColorPalette, initialState} from "../../+store/fontmatch.reduc
 import {Observable} from "rxjs";
 import {
   selectBgColor,
-  selectFontColor,
+  selectFontColor, updateArrayPalette,
   updateFontColor,
   updateFontSize,
   updateObjPalette,
@@ -23,6 +23,7 @@ export class CustomizeAreaComponent implements OnInit {
   $selectedFont:Observable<string>;
   $fontColorIndex:Observable<number>;
   $bgColorIndex:Observable<number>
+  $arrayPalette:Observable<string[]>
 
   fontSizeListMenu = [8,12,14,20,24,32,40,64,96,120,184,280];
 
@@ -46,6 +47,7 @@ export class CustomizeAreaComponent implements OnInit {
 
     this.$fontSize = this.store.select(state=>state.fontMatch.fontSize);
     this.$selectedFont = this.store.select(state=>state.fontMatch.selectedFontFamily);
+    this.$arrayPalette = this.store.select(state=>state.fontMatch.arrayPalette)
     this.$fontColorIndex = this.store.select(state => state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
 
@@ -59,12 +61,15 @@ export class CustomizeAreaComponent implements OnInit {
     this.store.dispatch(updateFontSize({inputFontSize:fontSize}));
   }
 
-  updatePalette(){
+  updatePalette(e,i){
 
 
     // console.log(this.objPalette);
     // this.store.dispatch(updateActivePalette({colorPalette:this.arrayPalette}))
     // this.store.dispatch(updateObjPalette({newPalette:this.objPalette}))
+    console.log(e);
+    console.log(i);
+    this.store.dispatch(updateArrayPalette({color:e,index:i}));
 
   }
 

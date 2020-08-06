@@ -1,10 +1,21 @@
 import {createReducer, on} from '@ngrx/store';
 import {
-  fetchGoogleFontSuccess, selectBgColor, selectFont, selectFontColor, updateActivePalette, updateCompColor,
+  fetchGoogleFontSuccess,
+  selectBgColor,
+  selectFont,
+  selectFontColor,
+  updateActivePalette,
+  updateArrayPalette,
+  updateCompColor,
   updateFontColor,
-  updateFontSize, updateMonoBgColors, updateObjPalette,
-  updatePreviewBg, updateSplitCompColors, updateTetradColors,
-  updateText, updateTriadColors
+  updateFontSize,
+  updateMonoBgColors,
+  updateObjPalette,
+  updatePreviewBg,
+  updateSplitCompColors,
+  updateTetradColors,
+  updateText,
+  updateTriadColors
 } from './fontmatch.actions';
 
 export interface FontMatch {
@@ -72,8 +83,15 @@ const _fontMatchReducer = createReducer(initialState,
   on(updateFontColor, (state,{fontColor}) => ({...state, color1: fontColor})),
   on(updateObjPalette, (state,{newPalette}) => ({...state, objPalette: newPalette})),
   on(selectFontColor, (state,{colorIndex}) => ({...state, fontColorIndex: colorIndex})),
-  on(selectBgColor, (state,{colorIndex}) => ({...state, bgColorIndex: colorIndex}))
-  // on(updateActivePalette, (state,{colorPalette}) => ({...state, arrayPalette: colorPalette})),
+  on(selectBgColor, (state,{colorIndex}) => ({...state, bgColorIndex: colorIndex})),
+  on(updateArrayPalette, (state,{color,index}) => ({
+    ...state,
+    arrayPalette: [
+      ...state.arrayPalette.slice(0,index),
+      color,
+      ...state.arrayPalette.slice(index+1)
+    ]
+  }))
 );
 
 export function fontMatchReducer(state, action) {
@@ -86,4 +104,10 @@ export interface ColorPalette {
   color3:string;
   color4:string;
   color5:string;
+}
+
+function replaceItem(itemArray, addedItem, index) {
+  console.log(itemArray);
+  itemArray.splice(index, 1, addedItem);
+  return itemArray;
 }
