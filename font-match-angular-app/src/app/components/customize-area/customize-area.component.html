@@ -27,8 +27,6 @@
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[4]" (colorPickerChange)="updatePalette($event,4)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[4]}" ></div>
     </div>
 
-    <div class="palette-color" [(colorPicker)]="tempPalette.color1" (colorPickerChange)="updateFontColor()" [ngStyle]="{'background-color':tempPalette.color1}"></div>
-
     <mat-form-field appearance="outline" fxFlex="48">
       <mat-select [value]="5">
         <mat-option [value]="5">5 colors</mat-option>

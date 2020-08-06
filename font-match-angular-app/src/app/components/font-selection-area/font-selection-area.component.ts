@@ -34,8 +34,6 @@ export class FontSelectionAreaComponent implements OnInit {
     this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
     this.$displayText = this.store.select(state => state.fontMatch.previewText);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
-    this.$fontColor = this.store.select(state=>state.fontMatch.color1);
-    this.$selectedBgColor = this.store.select(state=>state.fontMatch.selectedBgColor);
     this.$selectedFont = this.store.select(state => state.fontMatch.selectedFontFamily);
     this.$arrayPalette = this.store.select(state=>state.fontMatch.arrayPalette);
     this.$fontColorIndex = this.store.select(state=>state.fontMatch.fontColorIndex);

@@ -31,10 +31,6 @@ export class TextPreviewComponent{
     this.$activeArrayPalette = this.store.select(state=>state.fontMatch.arrayPalette);
     this.$fontColorIndex = this.store.select(state=>state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
-    this.$fontColor = this.store.select(state => state.fontMatch.color1);
-    this.$activeObjPalette = this.store.select(state=>state.fontMatch.objPalette);
-    this.$fontColorMap = this.store.select(state => state.fontMatch.fontColorMap);
-    this.$bgColorMap = this.store.select(state => state.fontMatch.bgColorMap);
   }
 
   updateText(e){

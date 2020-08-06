@@ -7,28 +7,6 @@
   }"  fxLayoutAlign="center center">
     <div class="display-text">{{$previewText | async}}</div>
   </div>
-  {{$activeArrayPalette|async}}<br>{{$fontColorIndex|async}}<br>
-  {{($activeArrayPalette|async)[$fontColorIndex|async]}}
-
-<!--  <div class="display-area" [ngStyle]="{-->
-<!--  'font-family': $fontFamily | async,-->
-<!--  'font-size.px':$fontSize | async,-->
-<!--  'color':($activeObjPalette|async)[$fontColorMap|async],-->
-<!--  'background-color':($activeObjPalette|async)[$bgColorMap|async]-->
-<!--  }"  fxLayoutAlign="center center">-->
-<!--    <div id="displayText" class="display-text">{{$previewText | async}}</div>-->
-<!--  </div>-->
-<!--  {{($activeObjPalette|async)[$fontColorMap|async]}}-->
-<!--  {{($activeObjPalette|async)}}{{$fontColorMap|async}}-->
-
-<!--  <div class="display-area" [ngStyle]="{-->
-<!--  'font-family': $fontFamily | async,-->
-<!--  'font-size.px':$fontSize | async,-->
-<!--  'color': $fontColor | async,-->
-<!--  'background-color':($activeArrayPalette|async)[$bgColorIndex|async]-->
-<!--  }"  fxLayoutAlign="center center">-->
-<!--    <div class="display-text">{{$previewText | async}}</div>-->
-<!--  </div>-->
 
   <div class="spacer"></div>
 
