@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../+store/fontmatch.reducer";
+import {AppState, initialState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
 import {
   selectBgColor,
@@ -23,7 +23,9 @@ export class CustomizeAreaComponent implements OnInit {
   $bgColorIndex:Observable<number>
   $arrayPalette:Observable<string[]>
 
-  fontSizeListMenu = [8,12,14,20,24,32,40,64,96,120,184,280];
+  fontSizeList = [8,12,14,20,24,32,40,64,96,120];
+
+  tempColorArray = initialState.arrayPalette;
 
   constructor(
     private store:Store<AppState>,

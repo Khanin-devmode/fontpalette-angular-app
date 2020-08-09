@@ -6,7 +6,7 @@
     <button mat-stroked-button class="frame-button"><mat-icon>radio_button_unchecked</mat-icon>Circle</button>
   </div>
   <div class="area-label row-mt">Color Palette</div>
-  <div fxLayout="column" class="row-mt" fxLayoutAlign="space-between start" fxLayout.xs="column" fxLayoutAlign.xs="start start">
+  <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start" fxLayout.xs="column" fxLayoutAlign.xs="start start">
 
 <!--    NOTE: FOLLOWING CODE IS WAY TO GO BUT BUG WITH COLOR PICKER, HAVE TO DO MANUAL ITERATION INSTEAD-->
 <!--    COLORPICKER HIDE PICKER NEXT TO EACH DIV, WHEN UPDATING ARRAY, DOM IS REFRESH AND COLORPICKER IS HIDDEN AGAIN--><!--    <div class="palette-container" fxLayout="row row-mb">-->
@@ -25,7 +25,10 @@
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[2]" (colorPickerChange)="updatePalette($event,2)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[2]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[3]" (colorPickerChange)="updatePalette($event,3)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[3]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[4]" (colorPickerChange)="updatePalette($event,4)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[4]}" ></div>
+
     </div>
+
+
 
     <mat-form-field appearance="outline" fxFlex="48">
       <mat-select [value]="5">
@@ -45,7 +48,7 @@
   <div class="row-mt palette-container" fxLayout="row">
     <div class="md-palette-color" *ngFor="let color of $arrayPalette|async;let i = index" (click)="selectFontColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}" [class.selected-color]="i == ($fontColorIndex | async)"></div>
     <input [hidden]="true" #fontIndex [value]="($fontColorIndex | async)" type="number" />
-    <mat-icon *ngIf="($arrayPalette|async)[$fontColorIndex|async] as fontColor" [ngStyle]="{'color':fontColor}" [colorPicker]="fontColor" (colorPickerChange)="updatePalette($event,fontIndex.valueAsNumber)">edit</mat-icon>
+    <mat-icon class="edit-icon" *ngIf="($arrayPalette|async)[$fontColorIndex|async] as fontColor" [ngStyle]="{'color':fontColor}" [colorPicker]="fontColor" (colorPickerChange)="updatePalette($event,fontIndex.valueAsNumber)">edit</mat-icon>
   </div>
 
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
@@ -71,11 +74,8 @@
   <div fxLayout="row" fxLayoutAlign="space-between start">
 
     <mat-form-field appearance="outline" fxFlex="48">
-      <mat-select [value]="40">
-        <mat-option [value]="40">40 px</mat-option>
-        <mat-option [value]="4">4 colors</mat-option>
-        <mat-option [value]="3">3 colors</mat-option>
-        <mat-option [value]="2">2 colors</mat-option>
+      <mat-select [value]="$fontSize | async" (selectionChange)="updateFontSize($event.value)" [placeholder]="($fontSize | async) + 'px'">
+        <mat-option *ngFor="let fontSize of fontSizeList" [value]="fontSize" >{{fontSize}}px</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -91,14 +91,8 @@
   </div>
 
   <div class="font-size-container" fxLayout="row">
-          <button mat-button>{{$fontSize|async}}px
-          </button>
-
-    <div fxFlex="auto">
-
-      <mat-slider min="8" max="300" step="1" value="{{$fontSize|async}}"
+      <mat-slider class="font-size-slider" min="8" max="120" step="1" value="{{$fontSize|async}}"
                   (input)="updateFontSize($event.value)"></mat-slider>
-    </div>
   </div>
 
   <div class="area-label row-mt">
@@ -109,12 +103,16 @@
     <div class="palette-container" fxLayout="row">
       <div class="md-palette-color" *ngFor="let color of $arrayPalette|async; let i = index" (click)="selectBgColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}" [class.selected-color]="i == ($bgColorIndex | async)"></div>
       <input [hidden]="true" #bgIndex [value]="($bgColorIndex | async)" type="number" />
-      <mat-icon *ngIf="($arrayPalette|async)[$bgColorIndex|async] as bgColor" [ngStyle]="{'color':bgColor}" [colorPicker]="bgColor" (colorPickerChange)="updatePalette($event,bgIndex.valueAsNumber)">edit</mat-icon>
+      <mat-icon class="edit-icon" *ngIf="($arrayPalette|async)[$bgColorIndex|async] as bgColor" [ngStyle]="{'color':bgColor}" [colorPicker]="bgColor" (colorPickerChange)="updatePalette($event,bgIndex.valueAsNumber)">edit</mat-icon>
     </div>
   </div>
 </div>
 
 <style>
+
+  .mat-select-placeholder{
+    color: #444444;
+  }
 
   mat-button-toggle mat-icon{
     margin:0 4px 0 4px;
@@ -189,5 +187,15 @@
   .selected-color{
     border: black 2px solid !important;
   }
+
+  .font-size-slider{
+    width:100%
+  }
+
+  .edit-icon{
+    margin: 8px 0 0 8px;
+    cursor: pointer;
+  }
+
 
 </style>
