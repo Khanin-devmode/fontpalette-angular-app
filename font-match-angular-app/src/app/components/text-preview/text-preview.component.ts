@@ -18,11 +18,6 @@ export class TextPreviewComponent{
   $activeArrayPalette:Observable<string[]>;
   $fontColorIndex:Observable<number>;
   $bgColorIndex:Observable<number>;
-  $fontColor:Observable<string>
-
-  $activeObjPalette:Observable<{}>
-  $fontColorMap:Observable<string>
-  $bgColorMap:Observable<string>
 
   constructor(private  store:Store<AppState>) {
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
@@ -34,7 +29,6 @@ export class TextPreviewComponent{
   }
 
   updateText(e){
-    console.log(e.target.value);
     if(e.target.value){
       this.store.dispatch(updateText({inputText:e.target.value}))
     }else{

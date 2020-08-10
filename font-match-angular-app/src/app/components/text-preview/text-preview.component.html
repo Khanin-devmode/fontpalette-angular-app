@@ -5,11 +5,13 @@
   'color':($activeArrayPalette|async)[$fontColorIndex|async],
   'background-color':($activeArrayPalette|async)[$bgColorIndex|async]
   }"  fxLayoutAlign="center center">
-    <div class="display-text">{{$previewText | async}}</div>
+    <div class="display-text animate__bounce">{{$previewText | async}}</div>
   </div>
-
+  <div class="err-text animate__animated animate__fadeInDown" *ngIf=" ($fontColorIndex|async) == ($bgColorIndex|async)">
+    <mat-icon>warning</mat-icon>
+    You are selecting same color for text and background.
+  </div>
   <div class="spacer"></div>
-
   <mat-form-field appearance="outline">
     <mat-label>Your text</mat-label>
     <input matInput type="text" placeholder="Your text" (keyup)="updateText($event)">
@@ -60,6 +62,16 @@
   .spacer{
     height: 12px;
     width:100%
+  }
+
+  .err-text{
+    margin-top:12px;
+    color:#b00020;
+    font-size:16px;
+  }
+
+  .err-text mat-icon{
+    vertical-align: bottom;
   }
 
 </style>
