@@ -19,7 +19,7 @@
 <!--      ></div>-->
 <!--    </div>-->
 
-    <div class="palette-container" fxLayout="row row-mb">
+    <div class="palette-container row-mb" fxLayout="row">
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[0]" (colorPickerChange)="updatePalette($event,0)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[0]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[1]" (colorPickerChange)="updatePalette($event,1)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[1]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[2]" (colorPickerChange)="updatePalette($event,2)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[2]}" ></div>
@@ -197,5 +197,8 @@
     cursor: pointer;
   }
 
+  .row-mb{
+    margin-bottom: 12px;
+  }
 
 </style>
