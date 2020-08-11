@@ -18,7 +18,7 @@ export interface FontMatch {
   previewText:string
   fontSize:number
   selectedFontFamily:string
-  googleFontList: {}[]
+  groupedFontList: {}[]
   monoBgColor:string[]
   splitCompColors:string[]
   triadColors:string[]
@@ -37,7 +37,7 @@ export const initialState:FontMatch = {
   previewText:'Find your fonts in colors',
   fontSize:40,
   selectedFontFamily:'Roboto',
-  googleFontList:[],
+  groupedFontList:[],
   monoBgColor:[],
   splitCompColors:[],
   triadColors:[],
@@ -53,7 +53,7 @@ const _fontMatchReducer = createReducer(initialState,
   on(updateText, (state,{inputText}) => ({...state, previewText: inputText})),
   on(selectFont, (state,{fontFamily}) => ({...state, selectedFontFamily: fontFamily})),
   on(updateFontSize, (state,{inputFontSize}) => ({...state, fontSize: inputFontSize})),
-  on(fetchGoogleFontSuccess, (state,{fontList}) => ({...state, googleFontList: fontList})),
+  on(fetchGoogleFontSuccess, (state,{groupedFontList}) => ({...state, groupedFontList: groupedFontList})),
   on(updateMonoBgColors, (state, {monoColors}) => ({...state, monoBgColor: monoColors})),
   on(updateSplitCompColors, (state, {splitCompColors}) => ({...state, splitCompColors: splitCompColors})),
   on(updateTriadColors, (state, {triadColors}) => ({...state, triadColors: triadColors})),

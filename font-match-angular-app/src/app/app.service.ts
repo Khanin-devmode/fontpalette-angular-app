@@ -13,8 +13,8 @@ import {Observable} from "rxjs";
 export class AppService {
 
   loadedGoogleFont:string[] =[];
-  $googleFontList: Observable<{}[]>
-  googleFontList: {}[] = [];
+  $groupedFontList: Observable<{}[]>
+  groupedFontList: {}[] = [];
 
   viewportSize : 'xs'|'sm'|'md'|'lg'|'xl' = 'md';
 
@@ -23,39 +23,43 @@ export class AppService {
               private breakpointObserver:BreakpointObserver
   ) {
 
-    this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
+    this.$groupedFontList = this.store.select(state => state.fontMatch.groupedFontList);
 
     breakpointObserver.observe([Breakpoints.XSmall]).subscribe(result => {
       if(result.matches){
         this.viewportSize = 'xs';
-        this.store.dispatch(fetchGoogleFontSuccess({fontList: this.util.groupArray(this.googleFontList,this.getCardCol(this.viewportSize))}))
+        this.store.dispatch(fetchGoogleFontSuccess({groupedFontList: this.util.groupArray(this.groupedFontList,this.getCardCol(this.viewportSize))}))
       }
     });
     breakpointObserver.observe([Breakpoints.Small]).subscribe(result => {
       if(result.matches){
         this.viewportSize = 'sm';
-        this.store.dispatch(fetchGoogleFontSuccess({fontList: this.util.groupArray(this.googleFontList,this.getCardCol(this.viewportSize))}))
+        this.store.dispatch(fetchGoogleFontSuccess({groupedFontList: this.util.groupArray(this.groupedFontList,this.getCardCol(this.viewportSize))}))
       }
     });
     breakpointObserver.observe([Breakpoints.Medium]).subscribe(result => {
       if(result.matches){
         this.viewportSize = 'md';
-        this.store.dispatch(fetchGoogleFontSuccess({fontList: this.util.groupArray(this.googleFontList,this.getCardCol(this.viewportSize))}))
+        this.store.dispatch(fetchGoogleFontSuccess({groupedFontList: this.util.groupArray(this.groupedFontList,this.getCardCol(this.viewportSize))}))
       }
     });
     breakpointObserver.observe([Breakpoints.Large]).subscribe(result => {
       if(result.matches){
         this.viewportSize = 'lg';
-        this.store.dispatch(fetchGoogleFontSuccess({fontList: this.util.groupArray(this.googleFontList,this.getCardCol(this.viewportSize))}))
+        this.store.dispatch(fetchGoogleFontSuccess({groupedFontList: this.util.groupArray(this.groupedFontList,this.getCardCol(this.viewportSize))}))
       }
     });
     breakpointObserver.observe([Breakpoints.XLarge]).subscribe(result => {
       if(result.matches){
         this.viewportSize = 'xl';
-        this.store.dispatch(fetchGoogleFontSuccess({fontList: this.util.groupArray(this.googleFontList,this.getCardCol(this.viewportSize))}))
+        this.store.dispatch(fetchGoogleFontSuccess({groupedFontList: this.util.groupArray(this.groupedFontList,this.getCardCol(this.viewportSize))}))
       }
     });
 
+  }
+
+  getCardCol(view){
+    return view == 'xs'? 1 : view == 'sm'? 2 : view == 'md'? 3 : view == 'lg'? 4 : view == 'xl'? 4: 3;
   }
 
   fetchGoogleFonts() {
@@ -69,9 +73,9 @@ export class AppService {
         return resp.json();
       })
       .then(function (data) {
-
-        self.googleFontList = data.items;
-        self.store.dispatch(fetchGoogleFontSuccess({fontList: self.util.groupArray(self.googleFontList,self.getCardCol(self.viewportSize))}))
+        console.log(data.items);
+        self.groupedFontList = data.items;
+        self.store.dispatch(fetchGoogleFontSuccess({groupedFontList: self.util.groupArray(self.groupedFontList,self.getCardCol(self.viewportSize))}))
 
       });
 
@@ -95,10 +99,6 @@ export class AppService {
       });
 
     }
-  }
-
-  getCardCol(view){
-    return view == 'xs'? 1 : view == 'sm'? 2 : view == 'md'? 3 : view == 'lg'? 4 : view == 'xl'? 4: 3;
   }
 
 }

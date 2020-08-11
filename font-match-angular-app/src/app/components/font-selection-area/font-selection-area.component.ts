@@ -15,7 +15,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 })
 export class FontSelectionAreaComponent implements OnInit {
 
-  $googleFontList: Observable<{}[]>;
+  $groupedFontList: Observable<{}[]>;
   $displayText: Observable<string>;
   $fontSize:Observable<number>;
   $fontColor:Observable<string>;
@@ -31,7 +31,7 @@ export class FontSelectionAreaComponent implements OnInit {
 
   ) {
 
-    this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
+    this.$groupedFontList = this.store.select(state => state.fontMatch.groupedFontList);
     this.$displayText = this.store.select(state => state.fontMatch.previewText);
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
     this.$selectedFont = this.store.select(state => state.fontMatch.selectedFontFamily);
