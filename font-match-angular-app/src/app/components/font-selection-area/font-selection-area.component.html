@@ -2,7 +2,7 @@
   <mat-tab label="Fonts select">
 
     <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="222">
-      <app-card-row *cdkVirtualFor="let fontGroup of $googleFontList | async"
+      <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"
                     [fontGroup]="fontGroup"
                     [displayText]="$displayText | async"
                     [fontSize]="$fontSize | async"

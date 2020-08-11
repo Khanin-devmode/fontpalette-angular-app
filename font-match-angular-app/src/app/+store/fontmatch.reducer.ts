@@ -1,8 +1,8 @@
 import {createReducer, on} from '@ngrx/store';
 import {
-  fetchGoogleFontSuccess,
+  updateFontGroup,
   selectBgColor,
-  selectFont,
+  selectFontFamily,
   selectFontColor,
   updateArrayPalette,
   updateCompColor,
@@ -11,13 +11,14 @@ import {
   updateSplitCompColors,
   updateTetradColors,
   updateText,
-  updateTriadColors
+  updateTriadColors, fetchGoogleFontSuccess
 } from './fontmatch.actions';
 
 export interface FontMatch {
   previewText:string
   fontSize:number
   selectedFontFamily:string
+  googleFontList:{}[]
   groupedFontList: {}[]
   monoBgColor:string[]
   splitCompColors:string[]
@@ -37,6 +38,7 @@ export const initialState:FontMatch = {
   previewText:'Find your fonts in colors',
   fontSize:40,
   selectedFontFamily:'Roboto',
+  googleFontList:[],
   groupedFontList:[],
   monoBgColor:[],
   splitCompColors:[],
@@ -51,9 +53,10 @@ export const initialState:FontMatch = {
 
 const _fontMatchReducer = createReducer(initialState,
   on(updateText, (state,{inputText}) => ({...state, previewText: inputText})),
-  on(selectFont, (state,{fontFamily}) => ({...state, selectedFontFamily: fontFamily})),
+  on(selectFontFamily, (state, {fontFamily}) => ({...state, selectedFontFamily: fontFamily})),
   on(updateFontSize, (state,{inputFontSize}) => ({...state, fontSize: inputFontSize})),
-  on(fetchGoogleFontSuccess, (state,{groupedFontList}) => ({...state, groupedFontList: groupedFontList})),
+  on(updateFontGroup, (state, {groupedFontList}) => ({...state, groupedFontList: groupedFontList})),
+  on(fetchGoogleFontSuccess, (state, {googleFonts}) => ({...state, googleFontList: googleFonts})),
   on(updateMonoBgColors, (state, {monoColors}) => ({...state, monoBgColor: monoColors})),
   on(updateSplitCompColors, (state, {splitCompColors}) => ({...state, splitCompColors: splitCompColors})),
   on(updateTriadColors, (state, {triadColors}) => ({...state, triadColors: triadColors})),

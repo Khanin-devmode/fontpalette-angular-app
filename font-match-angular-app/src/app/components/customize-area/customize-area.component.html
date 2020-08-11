@@ -52,10 +52,9 @@
   </div>
 
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
-
     <mat-form-field appearance="outline" fxFlex="48">
-      <mat-select [value]="$selectedFont | async">
-        <mat-option *ngFor="let font of $googleFontList | async"  [value]="font.family">{{font.fontFamily}}</mat-option>
+      <mat-select [value]="$selectedFont | async" (selectionChange)="selectFontFamily($event.value)">
+        <mat-option *ngFor="let font of $googleFontList | async"  [value]="font.family">{{font.family}}</mat-option>
 <!--        <mat-option [value]="'Roboto'">Roboto</mat-option>-->
 <!--        <mat-option [value]="4">4 colors</mat-option>-->
 <!--        <mat-option [value]="3">3 colors</mat-option>-->

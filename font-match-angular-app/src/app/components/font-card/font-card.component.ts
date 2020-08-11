@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AppService} from "../../app.service";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../+store/fontmatch.reducer";
-import {selectFont} from "../../+store/fontmatch.actions";
+import {selectFontFamily} from "../../+store/fontmatch.actions";
 
 @Component({
   selector: 'font-card',
@@ -31,7 +31,7 @@ export class FontCardComponent implements OnInit {
 
   selectFont(font){
       console.log(font);
-      this.store.dispatch(selectFont({fontFamily:font}));
+      this.store.dispatch(selectFontFamily({fontFamily:font}));
   }
 
 }

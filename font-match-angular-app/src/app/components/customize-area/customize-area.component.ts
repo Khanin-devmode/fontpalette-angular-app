@@ -3,10 +3,11 @@ import {Store} from "@ngrx/store";
 import {AppState, initialState} from "../../+store/fontmatch.reducer";
 import {Observable} from "rxjs";
 import {
-  selectBgColor,
+  selectBgColor, selectFontFamily,
   selectFontColor, updateArrayPalette,
   updateFontSize,
 } from "../../+store/fontmatch.actions";
+import {AppService} from "../../app.service";
 
 @Component({
   selector: 'app-customize-area',
@@ -22,13 +23,13 @@ export class CustomizeAreaComponent implements OnInit {
   $fontColorIndex:Observable<number>;
   $bgColorIndex:Observable<number>
   $arrayPalette:Observable<string[]>
+  $googleFontList:Observable<{}[]>
 
   fontSizeList = [8,12,14,20,24,32,40,64,96,120];
 
-  tempColorArray = initialState.arrayPalette;
-
   constructor(
     private store:Store<AppState>,
+    private appService:AppService
   ) {
 
     this.$fontSize = this.store.select(state=>state.fontMatch.fontSize);
@@ -36,6 +37,7 @@ export class CustomizeAreaComponent implements OnInit {
     this.$arrayPalette = this.store.select(state=>state.fontMatch.arrayPalette)
     this.$fontColorIndex = this.store.select(state => state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
+    this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
 
   }
 
@@ -57,6 +59,11 @@ export class CustomizeAreaComponent implements OnInit {
 
   selectBgColor(index:number){
     this.store.dispatch(selectBgColor({colorIndex:index}));
+  }
+
+  selectFontFamily(fontFamily){
+    this.appService.selectFontFamily(fontFamily);
+    // this.store.dispatch(selectFontFamily({fontFamily:fontFamily}))
   }
 
 }
