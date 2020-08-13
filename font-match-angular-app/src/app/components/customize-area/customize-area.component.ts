@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {
   selectBgColor, selectFontFamily,
   selectFontColor, updateArrayPalette,
-  updateFontSize,
+  updateFontSize, updateFontStyle,
 } from "../../+store/fontmatch.actions";
 import {AppService} from "../../app.service";
 
@@ -21,9 +21,10 @@ export class CustomizeAreaComponent implements OnInit {
   $fontSize: Observable<number>;
   $selectedFont:Observable<string>;
   $fontColorIndex:Observable<number>;
-  $bgColorIndex:Observable<number>
-  $arrayPalette:Observable<string[]>
-  $googleFontList:Observable<{}[]>
+  $bgColorIndex:Observable<number>;
+  $arrayPalette:Observable<string[]>;
+  $googleFontList:Observable<{}[]>;
+  $fontStyleName:Observable<string>;
 
   fontSizeList = [8,12,14,20,24,32,40,64,96,120];
 
@@ -38,6 +39,7 @@ export class CustomizeAreaComponent implements OnInit {
     this.$fontColorIndex = this.store.select(state => state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
     this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
+    this.$fontStyleName = this.store.select(state => state.fontMatch.fontStyleName)
 
   }
 
@@ -64,6 +66,22 @@ export class CustomizeAreaComponent implements OnInit {
   selectFontFamily(fontFamily){
     this.appService.selectFontFamily(fontFamily);
     // this.store.dispatch(selectFontFamily({fontFamily:fontFamily}))
+  }
+
+  changeFontStyle(fontStyleName){
+
+    console.log(fontStyleName);
+
+    if(fontStyleName == 'bold'){
+      this.store.dispatch(updateFontStyle({fontStyleName:fontStyleName,fontStyle:'normal',fontWeight:'bold'}))
+    }else if(fontStyleName == 'italic'){
+      this.store.dispatch(updateFontStyle({fontStyleName:fontStyleName,fontStyle:'italic',fontWeight:'normal'}))
+    }else if(fontStyleName == 'bold italic'){
+      this.store.dispatch(updateFontStyle({fontStyleName:fontStyleName,fontStyle:'italic',fontWeight:'bold'}))
+    }else{//default as regular
+      this.store.dispatch(updateFontStyle({fontStyleName:fontStyleName,fontStyle:'normal',fontWeight:'normal'}))
+    }
+
   }
 
 }

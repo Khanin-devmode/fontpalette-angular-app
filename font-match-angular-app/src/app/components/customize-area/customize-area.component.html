@@ -1,10 +1,11 @@
 <div class="wrapper">
-  <div class="area-label">Frame style</div>
-  <div fxLayout="row" fxLayoutGap="8px" class="frame-button-wrapper">
-    <button mat-stroked-button class="frame-button"><mat-icon>crop_16_9</mat-icon>16:9</button>
-    <button mat-stroked-button class="frame-button"><mat-icon>crop_square</mat-icon>Square</button>
-    <button mat-stroked-button class="frame-button"><mat-icon>radio_button_unchecked</mat-icon>Circle</button>
-  </div>
+<!--  NOTE: FUTURE FEATURE-->
+<!--  <div class="area-label">Frame style</div>-->
+<!--  <div fxLayout="row" fxLayoutGap="8px" class="frame-button-wrapper">-->
+<!--    <button mat-stroked-button class="frame-button"><mat-icon>crop_16_9</mat-icon>16:9</button>-->
+<!--    <button mat-stroked-button class="frame-button"><mat-icon>crop_square</mat-icon>Square</button>-->
+<!--    <button mat-stroked-button class="frame-button"><mat-icon>radio_button_unchecked</mat-icon>Circle</button>-->
+<!--  </div>-->
   <div class="area-label row-mt">Color Palette</div>
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start" fxLayout.xs="column" fxLayoutAlign.xs="start start">
 
@@ -29,15 +30,15 @@
     </div>
 
 
-
-    <mat-form-field appearance="outline" fxFlex="48">
-      <mat-select [value]="5">
-        <mat-option [value]="5">5 colors</mat-option>
-        <mat-option [value]="4">4 colors</mat-option>
-        <mat-option [value]="3">3 colors</mat-option>
-        <mat-option [value]="2">2 colors</mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    NOTE: FUTURE FEATURE-->
+<!--    <mat-form-field appearance="outline" fxFlex="48">-->
+<!--      <mat-select [value]="5">-->
+<!--        <mat-option [value]="5">5 colors</mat-option>-->
+<!--        <mat-option [value]="4">4 colors</mat-option>-->
+<!--        <mat-option [value]="3">3 colors</mat-option>-->
+<!--        <mat-option [value]="2">2 colors</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
 
   </div>
 
@@ -55,10 +56,6 @@
     <mat-form-field appearance="outline" fxFlex="48">
       <mat-select [value]="$selectedFont | async" (selectionChange)="selectFontFamily($event.value)">
         <mat-option *ngFor="let font of $googleFontList | async"  [value]="font.family">{{font.family}}</mat-option>
-<!--        <mat-option [value]="'Roboto'">Roboto</mat-option>-->
-<!--        <mat-option [value]="4">4 colors</mat-option>-->
-<!--        <mat-option [value]="3">3 colors</mat-option>-->
-<!--        <mat-option [value]="2">2 colors</mat-option>-->
       </mat-select>
     </mat-form-field>
     <div fxFlex="48">
@@ -80,11 +77,11 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline" fxFlex="48">
-      <mat-select [value]="'bold'">
+      <mat-select [value]="$fontStyleName | async" (selectionChange)="changeFontStyle($event.value)">
+        <mat-option [value]="'regular'">Regular</mat-option>
         <mat-option [value]="'bold'">Bold</mat-option>
-        <mat-option [value]="4">4 colors</mat-option>
-        <mat-option [value]="3">3 colors</mat-option>
-        <mat-option [value]="2">2 colors</mat-option>
+        <mat-option [value]="'italic'">Italic</mat-option>
+        <mat-option [value]="'bold italic'">Bold Italic</mat-option>
       </mat-select>
     </mat-form-field>
 

@@ -18,6 +18,8 @@ export class TextPreviewComponent{
   $activeArrayPalette:Observable<string[]>;
   $fontColorIndex:Observable<number>;
   $bgColorIndex:Observable<number>;
+  $fontStyle:Observable<string>;
+  $fontWeight:Observable<string>;
 
   constructor(private  store:Store<AppState>) {
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
@@ -26,6 +28,9 @@ export class TextPreviewComponent{
     this.$activeArrayPalette = this.store.select(state=>state.fontMatch.arrayPalette);
     this.$fontColorIndex = this.store.select(state=>state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
+    this.$fontStyle = this.store.select(state => state.fontMatch.fontStyle);
+    this.$fontWeight = this.store.select(state => state.fontMatch.fontWeight);
+
   }
 
   updateText(e){

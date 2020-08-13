@@ -18,12 +18,12 @@ export class FontSelectionAreaComponent implements OnInit {
   $groupedFontList: Observable<{}[]>;
   $displayText: Observable<string>;
   $fontSize:Observable<number>;
-  $fontColor:Observable<string>;
-  $selectedBgColor:Observable<string>;
   $selectedFont:Observable<string>;
-  $arrayPalette:Observable<string[]>
-  $fontColorIndex:Observable<number>
-  $bgColorIndex:Observable<number>
+  $arrayPalette:Observable<string[]>;
+  $fontColorIndex:Observable<number>;
+  $bgColorIndex:Observable<number>;
+  $fontStyle:Observable<string>;
+  $fontWeight:Observable<string>;
 
   constructor(private store:Store<AppState>,
               public util:AppUtilService,
@@ -38,7 +38,8 @@ export class FontSelectionAreaComponent implements OnInit {
     this.$arrayPalette = this.store.select(state=>state.fontMatch.arrayPalette);
     this.$fontColorIndex = this.store.select(state=>state.fontMatch.fontColorIndex);
     this.$bgColorIndex = this.store.select(state=>state.fontMatch.bgColorIndex);
-
+    this.$fontStyle = this.store.select(state => state.fontMatch.fontStyle);
+    this.$fontWeight = this.store.select(state =>state.fontMatch.fontWeight);
 
   }
 

@@ -3,7 +3,9 @@
   'font-family': $fontFamily | async,
   'font-size.px':$fontSize | async,
   'color':($activeArrayPalette|async)[$fontColorIndex|async],
-  'background-color':($activeArrayPalette|async)[$bgColorIndex|async]
+  'background-color':($activeArrayPalette|async)[$bgColorIndex|async],
+  'font-style': $fontStyle | async,
+  'font-weight': $fontWeight | async
   }"  fxLayoutAlign="center center">
     <div class="display-text animate__bounce">{{$previewText | async}}</div>
   </div>

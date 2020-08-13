@@ -11,7 +11,7 @@ import {
   updateSplitCompColors,
   updateTetradColors,
   updateText,
-  updateTriadColors, fetchGoogleFontSuccess, reset
+  updateTriadColors, fetchGoogleFontSuccess, reset, updateFontStyle
 } from './fontmatch.actions';
 
 export interface FontMatch {
@@ -27,7 +27,10 @@ export interface FontMatch {
   compColor:string
   arrayPalette:string[],
   fontColorIndex: number,
-  bgColorIndex: number
+  bgColorIndex: number,
+  fontStyleName: 'regular'|'bold'|'italic'|'bold italic';
+  fontStyle:'normal'|'italic',
+  fontWeight:'normal'|'bold'
 }
 
 export interface AppState {
@@ -47,7 +50,10 @@ export const initialState:FontMatch = {
   compColor:'',
   arrayPalette:['#5288F0','#99D0B9','#CAE2A2','#C15771','#FC8C8C'],
   fontColorIndex:0,
-  bgColorIndex:1
+  bgColorIndex:1,
+  fontStyleName:'regular',
+  fontStyle:'normal',
+  fontWeight:'normal'
 
 };
 
@@ -80,8 +86,16 @@ const _fontMatchReducer = createReducer(initialState,
     selectedFontFamily:'Roboto',
     arrayPalette:['#5288F0','#99D0B9','#CAE2A2','#C15771','#FC8C8C'],
     fontColorIndex:0,
-    bgColorIndex:1
+    bgColorIndex:1,
+    fontStyleName:'regular',
+    fontStyle:'normal',
+    fontWeight:'normal'
   })),
+  on(updateFontStyle, (state,{fontStyleName,fontStyle,fontWeight}) => ({
+    ...state,
+    fontStyleName:fontStyleName,
+    fontStyle:fontStyle,
+    fontWeight:fontWeight })),
 
 );
 
