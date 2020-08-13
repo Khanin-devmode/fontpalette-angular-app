@@ -11,7 +11,7 @@ import {
   updateSplitCompColors,
   updateTetradColors,
   updateText,
-  updateTriadColors, fetchGoogleFontSuccess
+  updateTriadColors, fetchGoogleFontSuccess, reset
 } from './fontmatch.actions';
 
 export interface FontMatch {
@@ -71,7 +71,18 @@ const _fontMatchReducer = createReducer(initialState,
       color,
       ...state.arrayPalette.slice(index+1)
     ]
-  }))
+  })),
+  // on(reset, (state) => (Object.assign(initialState))),
+  on(reset, (state) => ({
+    ...state,
+    previewText:'Find your fonts in colors',
+    fontSize:40,
+    selectedFontFamily:'Roboto',
+    arrayPalette:['#5288F0','#99D0B9','#CAE2A2','#C15771','#FC8C8C'],
+    fontColorIndex:0,
+    bgColorIndex:1
+  })),
+
 );
 
 export function fontMatchReducer(state, action) {

@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {AppState, initialState} from "../../+store/fontmatch.reducer";
-import {updateText} from "../../+store/fontmatch.actions";
+import {reset, updateText} from "../../+store/fontmatch.actions";
 
 @Component({
   selector: 'app-text-preview',
@@ -34,6 +34,10 @@ export class TextPreviewComponent{
     }else{
       this.store.dispatch(updateText({inputText:initialState.previewText}))
     }
+  }
+
+  reset(){
+    this.store.dispatch(reset());
   }
 
 }

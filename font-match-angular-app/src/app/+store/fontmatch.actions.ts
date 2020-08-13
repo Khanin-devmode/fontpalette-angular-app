@@ -15,3 +15,4 @@ export const fetchGoogleFontError = createAction('FETCH_GOOGLE_FONTS_ERROR')
 export const selectFontColor = createAction('SELECT_FONT_COLOR',props<{colorIndex:number}>())
 export const selectBgColor = createAction('SELEECT_BG_COLOR',props<{colorIndex:number}>())
 export const updateArrayPalette = createAction('UPDATE_ARRAY_PALETTE',props<{color:string,index:number}>())
+export const reset = createAction('RESET');
