@@ -5,8 +5,9 @@
   'color':($activeArrayPalette|async)[$fontColorIndex|async],
   'background-color':($activeArrayPalette|async)[$bgColorIndex|async],
   'font-style': $fontStyle | async,
-  'font-weight': $fontWeight | async
-  }"  fxLayoutAlign="center center">
+  'font-weight': $fontWeight | async,
+  'text-align': $fontAlign | async
+  }"  [fxLayoutAlign]="($fontAlign|async)+ ' center'">
     <div class="display-text animate__bounce">{{$previewText | async}}</div>
   </div>
   <div class="err-text animate__animated animate__fadeInDown" *ngIf=" ($fontColorIndex|async) == ($bgColorIndex|async)">

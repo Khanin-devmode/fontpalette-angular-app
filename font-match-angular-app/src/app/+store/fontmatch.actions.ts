@@ -17,3 +17,4 @@ export const selectBgColor = createAction('SELEECT_BG_COLOR',props<{colorIndex:n
 export const updateArrayPalette = createAction('UPDATE_ARRAY_PALETTE',props<{color:string,index:number}>());
 export const reset = createAction('RESET');
 export const updateFontStyle = createAction('UPDATE_FONT_STYLE', props<{fontStyleName:string,fontStyle:string,fontWeight:string}>());
+export const updateFontAlign = createAction('UPDATE_FONT_ALIGN',props<{fontAlign:string}>());

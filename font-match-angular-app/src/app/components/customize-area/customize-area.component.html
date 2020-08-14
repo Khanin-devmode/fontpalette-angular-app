@@ -59,10 +59,10 @@
       </mat-select>
     </mat-form-field>
     <div fxFlex="48">
-      <mat-button-toggle-group name="formatAlign" aria-label="Font Style">
-        <mat-button-toggle value="left"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="center"><mat-icon>format_align_center</mat-icon></mat-button-toggle>
-        <mat-button-toggle value="right"><mat-icon>format_align_right</mat-icon></mat-button-toggle>
+      <mat-button-toggle-group name="formatAlign" [value]="$fontAlign | async" (change)="changeFontAlign($event.value)" aria-label="Font Align">
+        <mat-button-toggle value="start"><mat-icon>format_align_left</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="center" ><mat-icon>format_align_center</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="end" ><mat-icon>format_align_right</mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 

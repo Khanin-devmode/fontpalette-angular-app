@@ -15,6 +15,7 @@ export class CardRowComponent implements OnInit {
   @Input() selectedFont:string; //to check if font is selected.
   @Input() fontStyle:string;
   @Input() fontWeight:string;
+  @Input() fontAlign:string;
 
   constructor() { }
 

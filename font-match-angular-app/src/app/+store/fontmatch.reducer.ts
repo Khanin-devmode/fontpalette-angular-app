@@ -11,7 +11,7 @@ import {
   updateSplitCompColors,
   updateTetradColors,
   updateText,
-  updateTriadColors, fetchGoogleFontSuccess, reset, updateFontStyle
+  updateTriadColors, fetchGoogleFontSuccess, reset, updateFontStyle, updateFontAlign
 } from './fontmatch.actions';
 
 export interface FontMatch {
@@ -30,7 +30,9 @@ export interface FontMatch {
   bgColorIndex: number,
   fontStyleName: 'regular'|'bold'|'italic'|'bold italic';
   fontStyle:'normal'|'italic',
-  fontWeight:'normal'|'bold'
+  fontWeight:'normal'|'bold',
+  fontAlign:'start'|'center'|'end'
+  
 }
 
 export interface AppState {
@@ -53,7 +55,8 @@ export const initialState:FontMatch = {
   bgColorIndex:1,
   fontStyleName:'regular',
   fontStyle:'normal',
-  fontWeight:'normal'
+  fontWeight:'normal',
+  fontAlign:'start'
 
 };
 
@@ -95,7 +98,9 @@ const _fontMatchReducer = createReducer(initialState,
     ...state,
     fontStyleName:fontStyleName,
     fontStyle:fontStyle,
-    fontWeight:fontWeight })),
+    fontWeight:fontWeight 
+  })),
+  on(updateFontAlign, (state,{fontAlign}) =>({...state , fontAlign:fontAlign}))
 
 );
 

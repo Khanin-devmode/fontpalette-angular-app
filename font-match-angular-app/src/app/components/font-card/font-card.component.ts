@@ -20,6 +20,7 @@ export class FontCardComponent implements OnInit {
   @Input() selectedFont:string;
   @Input() fontStyle:string;
   @Input() fontWeight:string;
+  @Input() fontAlign:string;
 
   constructor(public appService:AppService,
               private store:Store<AppState>

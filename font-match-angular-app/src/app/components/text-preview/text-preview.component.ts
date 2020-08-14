@@ -20,6 +20,7 @@ export class TextPreviewComponent{
   $bgColorIndex:Observable<number>;
   $fontStyle:Observable<string>;
   $fontWeight:Observable<string>;
+  $fontAlign:Observable<string>
 
   constructor(private  store:Store<AppState>) {
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
@@ -30,7 +31,7 @@ export class TextPreviewComponent{
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
     this.$fontStyle = this.store.select(state => state.fontMatch.fontStyle);
     this.$fontWeight = this.store.select(state => state.fontMatch.fontWeight);
-
+    this.$fontAlign = this.store.select(state=>state.fontMatch.fontAlign);
   }
 
   updateText(e){

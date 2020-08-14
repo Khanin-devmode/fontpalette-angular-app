@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {AppState} from "../../+store/fontmatch.reducer";
-import {Observable} from "rxjs";
+import {Observable, Observer} from "rxjs";
 import {AppUtilService} from "../../app.util.service";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 
@@ -24,6 +24,7 @@ export class FontSelectionAreaComponent implements OnInit {
   $bgColorIndex:Observable<number>;
   $fontStyle:Observable<string>;
   $fontWeight:Observable<string>;
+  $fontAlign:Observable<string>;
 
   constructor(private store:Store<AppState>,
               public util:AppUtilService,
@@ -40,6 +41,7 @@ export class FontSelectionAreaComponent implements OnInit {
     this.$bgColorIndex = this.store.select(state=>state.fontMatch.bgColorIndex);
     this.$fontStyle = this.store.select(state => state.fontMatch.fontStyle);
     this.$fontWeight = this.store.select(state =>state.fontMatch.fontWeight);
+    this.$fontAlign = this.store.select(state => state.fontMatch.fontAlign);
 
   }
 

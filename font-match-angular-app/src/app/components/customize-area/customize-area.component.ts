@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {
   selectBgColor, selectFontFamily,
   selectFontColor, updateArrayPalette,
-  updateFontSize, updateFontStyle,
+  updateFontSize, updateFontStyle, updateFontAlign,
 } from "../../+store/fontmatch.actions";
 import {AppService} from "../../app.service";
 
@@ -25,6 +25,7 @@ export class CustomizeAreaComponent implements OnInit {
   $arrayPalette:Observable<string[]>;
   $googleFontList:Observable<{}[]>;
   $fontStyleName:Observable<string>;
+  $fontAlign:Observable<string>;
 
   fontSizeList = [8,12,14,20,24,32,40,64,96,120];
 
@@ -40,6 +41,8 @@ export class CustomizeAreaComponent implements OnInit {
     this.$bgColorIndex = this.store.select(state => state.fontMatch.bgColorIndex);
     this.$googleFontList = this.store.select(state => state.fontMatch.googleFontList);
     this.$fontStyleName = this.store.select(state => state.fontMatch.fontStyleName)
+    this.$fontAlign = this.store.select(state => state.fontMatch.fontAlign);
+
 
   }
 
@@ -82,6 +85,10 @@ export class CustomizeAreaComponent implements OnInit {
       this.store.dispatch(updateFontStyle({fontStyleName:fontStyleName,fontStyle:'normal',fontWeight:'normal'}))
     }
 
+  }
+
+  changeFontAlign(alignPosition:string){
+    this.store.dispatch(updateFontAlign({fontAlign:alignPosition}));
   }
 
 }
