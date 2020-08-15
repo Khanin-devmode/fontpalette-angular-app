@@ -1,7 +1,7 @@
 <mat-tab-group animationDuration="800">
   <mat-tab label="Fonts select">
 
-    <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="222">
+    <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="256">
       <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"
                     [fontGroup]="fontGroup"
                     [displayText]="$displayText | async"
@@ -29,7 +29,6 @@
 
   .virtual-viewport {
     height: calc(100vh - 60px);
-
   }
 
 </style>

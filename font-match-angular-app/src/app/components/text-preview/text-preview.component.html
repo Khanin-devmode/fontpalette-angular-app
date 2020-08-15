@@ -8,7 +8,7 @@
   'font-weight': $fontWeight | async,
   'text-align': $fontAlign | async
   }"  [fxLayoutAlign]="($fontAlign|async)+ ' center'">
-    <div class="display-text animate__bounce">{{$previewText | async}}</div>
+    <div class="display-text">{{$previewText | async}}</div>
   </div>
   <div class="err-text animate__animated animate__fadeInDown" *ngIf=" ($fontColorIndex|async) == ($bgColorIndex|async)">
     <mat-icon>warning</mat-icon>
@@ -45,6 +45,9 @@
   .display-text{
     padding:10px;
     line-height:normal;
+    max-height: 80%;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   mat-form-field{

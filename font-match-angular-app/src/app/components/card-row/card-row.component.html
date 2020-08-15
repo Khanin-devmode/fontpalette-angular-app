@@ -1,5 +1,5 @@
 <div class="row-container" fxLayout="row">
-  <font-card *ngFor="let font of fontGroup" fxFlex="{{100/fontGroup.length}}"
+  <font-card *ngFor="let font of fontGroup" fxFlex="0 0 {{100/fontGroup.length}}"
              [fontFamily]="font.family"
              [fontSize]="fontSize"
              [displayText]="displayText"
@@ -15,6 +15,6 @@
 
 <style>
   .row-container{
-    height: 222px;
+    height: 256px;
   }
 </style>

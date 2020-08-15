@@ -1,14 +1,15 @@
 <div class="font-card-wrapper" (click)="selectFont(fontFamily)">
-  {{fontFamily}}
+  <div class="font-card-header">
+    {{fontFamily}}<mat-icon class="checked-icon" *ngIf="selectedFont == fontFamily">check_circle</mat-icon>
+  </div>
   <div class="font-display" [fxLayoutAlign]="fontAlign + ' center'"
-       [class.font-selected]="selectedFont == fontFamily"
        [ngStyle]=
          "{
           'background-color':selectedBgColor,
           'color':fontColor
           }"
   >
-    <p [ngStyle]=
+    <div class="text-preview" [ngStyle]=
          "{
           'font-size.px':fontSize,
           'font-family':fontFamily,
@@ -16,30 +17,46 @@
           'font-weight':fontWeight,
           'text-align':fontAlign
           }"
-    >{{displayText}}</p>
+    >{{displayText}}</div>
   </div>
 </div>
 
 <style>
 
   .font-card-wrapper{
-    padding:5px;
+    padding:4px;
   }
 
   .font-card-wrapper :hover{
     cursor:pointer;
   }
 
-  .font-display{
-    padding:5px;
-    height:200px;
-    border: #757575 1px solid;
-    border-radius: 5px;
-    line-height:normal;
-  }
-  .font-selected{
-    border: red 5px solid;
+  .font-card-header{
+    padding-top:4px;
+    font-size:16px;
+    height:24px;
+    color:#444444;
   }
 
+  .checked-icon{
+    color:green;
+    vertical-align: top;
+    font-size:20px;
+    margin-left:4px;
+  }
+
+  .font-display{
+    padding:4px;
+    height:220px;
+    border: #c4c4c4 1px solid;
+    border-radius: 8px;
+    line-height:normal;
+  }
+
+  .text-preview{
+    max-height: 90%;
+    max-width: 100%;
+    overflow: hidden;
+  }
 
 </style>
