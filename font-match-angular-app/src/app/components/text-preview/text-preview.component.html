@@ -21,7 +21,8 @@
   </mat-form-field>
   <div fxLayoutAlign="row" fxLayoutGap="8px" fxLayoutAlign="start start" class="button-area-wrapper white-mt">
     <button  mat-stroked-button class="save-button" (click)="reset()">Reset</button>
-    <button  mat-stroked-button class="save-button">Save to Favorites</button>
+    <a [href]="'https://fonts.google.com/specimen/'+($fontFamily | async)" target="_blank"><button  mat-stroked-button class="save-button">Download font</button></a>
+    
   </div>
 </div>
 
