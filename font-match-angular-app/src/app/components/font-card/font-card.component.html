@@ -3,7 +3,7 @@
   <div class="font-card-header" fxLayout="row">
     {{fontFamily}}<mat-icon class="checked-icon" *ngIf="selectedFont == fontFamily">check_circle</mat-icon>
     <div style="flex: 1 1 auto;"></div>
-      <a [href]="'https://fonts.google.com/specimen/'+fontFamily" target="_blank"><mat-icon class="header-dl-icon">get_app</mat-icon></a>
+      <a [href]="'https://fonts.google.com/specimen/'+fontFamily" target="_blank"><button class="header-icon-btn" mat-icon-button><mat-icon class="header-dl-icon">get_app</mat-icon></button></a>
   </div>
   <div class="font-display" [fxLayoutAlign]="fontAlign + ' center'" [ngStyle]="{
           'background-color':selectedBgColor,
@@ -30,7 +30,13 @@
 
 <style>
 
+  .header-icon-btn{
+    width:24px;
+    height:24px;
+  }
+
   .header-dl-icon{
+    vertical-align: top;
     font-size:20px;
     margin:0px;
     color:#444444;
