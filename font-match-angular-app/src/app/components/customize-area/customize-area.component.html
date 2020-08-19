@@ -21,11 +21,11 @@
 <!--    </div>-->
 
     <div class="palette-container row-mb" fxLayout="row">
-      <div class="palette-color" [colorPicker]="($arrayPalette | async)[0]" (colorPickerChange)="updatePalette($event,0)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[0]}" ></div>
+      <div class="palette-color first-palette" [colorPicker]="($arrayPalette | async)[0]" (colorPickerChange)="updatePalette($event,0)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[0]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[1]" (colorPickerChange)="updatePalette($event,1)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[1]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[2]" (colorPickerChange)="updatePalette($event,2)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[2]}" ></div>
       <div class="palette-color" [colorPicker]="($arrayPalette | async)[3]" (colorPickerChange)="updatePalette($event,3)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[3]}" ></div>
-      <div class="palette-color" [colorPicker]="($arrayPalette | async)[4]" (colorPickerChange)="updatePalette($event,4)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[4]}" ></div>
+      <div class="palette-color last-palette" [colorPicker]="($arrayPalette | async)[4]" (colorPickerChange)="updatePalette($event,4)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':($arrayPalette | async)[4]}" ></div>
 
     </div>
 
@@ -46,11 +46,17 @@
     Text
   </div>
 
-  <div class="row-mt palette-container" fxLayout="row">
-    <div class="md-palette-color" *ngFor="let color of $arrayPalette|async;let i = index" (click)="selectFontColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}" [class.selected-color]="i == ($fontColorIndex | async)"></div>
+  <div class="row-mt" fxLayout="row">
+    <div fxLayout="row" class="dup-palette-container">
+      <div class="md-palette-color" *ngFor="let color of $arrayPalette|async;let i = index" (click)="selectFontColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}">
+        <mat-icon class="checked-palette" *ngIf="i == ($fontColorIndex | async)">check</mat-icon>
+      </div>
+    </div>
     <input [hidden]="true" #fontIndex [value]="($fontColorIndex | async)" type="number" />
     <mat-icon class="edit-icon" *ngIf="($arrayPalette|async)[$fontColorIndex|async] as fontColor" [ngStyle]="{'color':fontColor}" [colorPicker]="fontColor" (colorPickerChange)="updatePalette($event,fontIndex.valueAsNumber)">edit</mat-icon>
+
   </div>
+
 
   <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
     <mat-form-field appearance="outline" fxFlex="48">
@@ -96,17 +102,25 @@
   <div class="area-label row-mt">
     Background
   </div>
-  <div fxLayout="row" class="row-mt" fxLayoutAlign="space-between start">
+  <div fxLayout="row" class="row-mt" fxLayoutAlign="start start">
 
-    <div class="palette-container" fxLayout="row">
-      <div class="md-palette-color" *ngFor="let color of $arrayPalette|async; let i = index" (click)="selectBgColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}" [class.selected-color]="i == ($bgColorIndex | async)"></div>
-      <input [hidden]="true" #bgIndex [value]="($bgColorIndex | async)" type="number" />
-      <mat-icon class="edit-icon" *ngIf="($arrayPalette|async)[$bgColorIndex|async] as bgColor" [ngStyle]="{'color':bgColor}" [colorPicker]="bgColor" (colorPickerChange)="updatePalette($event,bgIndex.valueAsNumber)">edit</mat-icon>
+    <div class="dup-palette-container" fxLayout="row">
+      <div class="md-palette-color" *ngFor="let color of $arrayPalette|async; let i = index" (click)="selectBgColor(i)" [ngStyle]="{'background-color':color,'border': color +' 2px solid'}">
+        <mat-icon class="checked-palette" *ngIf="i == ($bgColorIndex | async)">check</mat-icon>
+      </div>
     </div>
+    <input [hidden]="true" #bgIndex [value]="($bgColorIndex | async)" type="number" />
+    <mat-icon class="edit-icon" *ngIf="($arrayPalette|async)[$bgColorIndex|async] as bgColor" [ngStyle]="{'color':bgColor}" [colorPicker]="bgColor" (colorPickerChange)="updatePalette($event,bgIndex.valueAsNumber)">edit</mat-icon>
+
   </div>
 </div>
 
 <style>
+
+  .checked-palette{
+      margin:6px;
+      text-shadow: 0px 0px 8px #c4c4c4
+  }
 
   .mat-select-placeholder{
     color: #444444;
@@ -116,8 +130,8 @@
     margin:0 4px 0 4px;
   }
 
-  .palette-container{
-    height:fit-content;
+  .dup-palette-container{
+    
   }
 
   .palette-color{
@@ -126,12 +140,22 @@
     cursor: pointer;
   }
 
-  .palette-container :first-child{
+  .first-palette{
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
 
-  .palette-container :last-child{
+  .last-palette{
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  .dup-palette-container :first-child{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+
+  .dup-palette-container .md-palette-color:nth-last-child(1){
     border-bottom-right-radius: 8px;
     border-top-right-radius: 8px;
   }
@@ -182,9 +206,10 @@
     font-weight: normal;
   }
 
-  .selected-color{
+  /* NOTE: Class to use when do display selected with border */
+  /* .selected-color{
     border: black 2px solid !important;
-  }
+  } */
 
   .font-size-slider{
     width:100%
