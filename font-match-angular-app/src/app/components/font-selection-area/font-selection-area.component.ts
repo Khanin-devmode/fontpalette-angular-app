@@ -26,6 +26,8 @@ export class FontSelectionAreaComponent implements OnInit {
   $fontWeight:Observable<string>;
   $fontAlign:Observable<string>;
 
+  paletteCombination = []
+
   constructor(private store:Store<AppState>,
               public util:AppUtilService,
               public breakpointObserver:BreakpointObserver
@@ -42,6 +44,11 @@ export class FontSelectionAreaComponent implements OnInit {
     this.$fontStyle = this.store.select(state => state.fontMatch.fontStyle);
     this.$fontWeight = this.store.select(state =>state.fontMatch.fontWeight);
     this.$fontAlign = this.store.select(state => state.fontMatch.fontAlign);
+
+    this.$arrayPalette.subscribe(palette =>{
+      console.log (this.util.getPaletteCombination(palette));
+      this.paletteCombination = this.util.getPaletteCombination(palette);
+    })
 
   }
 

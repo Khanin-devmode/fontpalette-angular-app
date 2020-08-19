@@ -41,4 +41,22 @@ export class AppUtilService {
   getComplementColor(hexColor: string) {
     return tinyColor(hexColor).complement().toHexString();
   }
+
+  getPaletteCombination(palette:string[]){
+
+    let paletteCombination= []
+
+    palette.forEach(fontColor => {
+      palette.forEach(bgColor =>{
+        if(fontColor !== bgColor){
+          paletteCombination.push([fontColor,bgColor])
+        }
+      })
+    })
+
+    return paletteCombination;
+  }
+
+
+
 }

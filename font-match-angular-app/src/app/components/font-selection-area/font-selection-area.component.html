@@ -18,9 +18,13 @@
 
   </mat-tab>
   <mat-tab label="Color combination">
-    <div style="height:50vh; width:100%">
-      Favorites
-
+    <div style="height:50vh; width:100%" fxLayout="row wrap">
+        <div class="combination-card" fxFlex="33.33" *ngFor="let couple of paletteCombination" 
+        [ngStyle]="{
+          'background-color':couple[0]
+        }">
+        <div [ngStyle]="{'color':couple[1]}">{{$displayText | async}}</div>
+        </div>
     </div>
   </mat-tab>
 </mat-tab-group>
@@ -29,6 +33,10 @@
 
   .virtual-viewport {
     height: calc(100vh - 60px);
+  }
+
+  .combinatino-card{
+    height:240px;
   }
 
 </style>
