@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../+store/fontmatch.reducer';
 import {Observable, Observer} from 'rxjs';
@@ -12,8 +12,6 @@ import {selectBgColor, selectFontColor} from '../../+store/fontmatch.actions';
   templateUrl: './font-selection-area.component.html',
   styleUrls: ['./font-selection-area.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
 export class FontSelectionAreaComponent implements OnInit {
 

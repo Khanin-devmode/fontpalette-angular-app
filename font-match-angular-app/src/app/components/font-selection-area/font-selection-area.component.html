@@ -12,13 +12,12 @@
                     [fontStyle]="$fontStyle |async"
                     [fontWeight]="$fontWeight | async"
                     [fontAlign]="$fontAlign | async"
-
       ></app-card-row>
     </cdk-virtual-scroll-viewport>
 
   </mat-tab>
   <mat-tab label="Color combination">
-    <div style="height:50vh; width:100%" fxLayout="row wrap">
+    <div fxLayout="row wrap">
       <div class="combination-wrapper" fxFlex="33.33" *ngFor="let combination of paletteCombination">
         <div class="combination-card"
              [ngStyle]="{'background-color':combination.bgColor}"
@@ -44,13 +43,14 @@
 <style>
 
   .virtual-viewport {
-    height: calc(100vh - 60px);
+    height: calc((256*3px));
   }
 
   .combination-card {
     height: 240px;
     border-radius: 8px;
-    padding: 4px
+    padding: 4px;
+    border: #c4c4c4 1px solid;
   }
 
   .combination-wrapper{
