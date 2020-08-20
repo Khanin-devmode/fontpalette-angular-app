@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AppService} from "../../app.service";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../+store/fontmatch.reducer";
-import {selectFontFamily} from "../../+store/fontmatch.actions";
+import {AppService} from '../../app.service';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../+store/fontmatch.reducer';
+import {selectFontFamily} from '../../+store/fontmatch.actions';
 
 @Component({
   selector: 'font-card',
@@ -11,19 +11,19 @@ import {selectFontFamily} from "../../+store/fontmatch.actions";
 })
 export class FontCardComponent implements OnInit {
 
-  @Input() fontFamily:string;
-  @Input() displayText:string;
-  @Input() fontSize:number;
-  @Input() index:number;
-  @Input() fontColor:string;
-  @Input() selectedBgColor:string;
-  @Input() selectedFont:string;
-  @Input() fontStyle:string;
-  @Input() fontWeight:string;
-  @Input() fontAlign:string;
+  @Input() fontFamily: string;
+  @Input() displayText: string;
+  @Input() fontSize: number;
+  @Input() index: number;
+  @Input() fontColor: string;
+  @Input() selectedBgColor: string;
+  @Input() selectedFont: string;
+  @Input() fontStyle: string;
+  @Input() fontWeight: string;
+  @Input() fontAlign: string;
 
-  constructor(public appService:AppService,
-              private store:Store<AppState>
+  constructor(public appService: AppService,
+              private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +34,7 @@ export class FontCardComponent implements OnInit {
 
   selectFont(font){
       console.log(font);
-      this.store.dispatch(selectFontFamily({fontFamily:font}));
+      this.store.dispatch(selectFontFamily({fontFamily: font}));
   }
 
 }

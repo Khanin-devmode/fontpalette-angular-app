@@ -19,12 +19,24 @@
   </mat-tab>
   <mat-tab label="Color combination">
     <div style="height:50vh; width:100%" fxLayout="row wrap">
-        <div class="combination-card" fxFlex="33.33" *ngFor="let couple of paletteCombination" 
-        [ngStyle]="{
-          'background-color':couple[0]
-        }">
-        <div [ngStyle]="{'color':couple[1]}">{{$displayText | async}}</div>
+      <div class="combination-wrapper" fxFlex="33.33" *ngFor="let combination of paletteCombination">
+        <div class="combination-card"
+             [ngStyle]="{'background-color':combination.bgColor}"
+             (click)="selectCombination(combination)" fxLayout="row" fxLayoutAlign="center center">
+          <div  class="display-text"
+                [ngStyle]="{
+                'color':combination.fontColor,
+                          'font-size.px':$fontSize|async,
+          'font-family':$selectedFont | async,
+          'font-style':$fontStyle | async,
+          'font-weight':$fontWeight | async,
+          'text-align':$fontAlign | async
+                }">
+            {{$displayText | async}}
+          </div>
+
         </div>
+      </div>
     </div>
   </mat-tab>
 </mat-tab-group>
@@ -35,8 +47,22 @@
     height: calc(100vh - 60px);
   }
 
-  .combinatino-card{
-    height:240px;
+  .combination-card {
+    height: 240px;
+    border-radius: 8px;
+    padding: 4px
+  }
+
+  .combination-wrapper{
+    padding:4px;
+  }
+
+  .display-text {
+    max-height: 90%;
+    max-width: 100%;
+    overflow: hidden;
+    line-height: normal;
+
   }
 
 </style>

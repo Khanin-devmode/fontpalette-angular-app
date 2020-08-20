@@ -7,11 +7,11 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BgCardComponent implements OnInit {
 
-  @Input() bgColor:string;
-  @Input() previewText:string;
-  @Input() selectedFont:string;
-  @Input() selectedFontColor:string;
-  @Input() fontSize:number;
+  @Input() bgColor: string;
+  @Input() previewText: string;
+  @Input() selectedFont: string;
+  @Input() selectedFontColor: string;
+  @Input() fontSize: number;
 
   constructor() { }
 

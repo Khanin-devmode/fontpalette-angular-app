@@ -6,15 +6,16 @@
       <a [href]="'https://fonts.google.com/specimen/'+fontFamily" target="_blank"><button class="header-icon-btn" mat-icon-button><mat-icon class="header-dl-icon">get_app</mat-icon></button></a>
   </div>
   <div class="font-display" [fxLayoutAlign]="fontAlign + ' center'" [ngStyle]="{
-          'background-color':selectedBgColor,
-          'color':fontColor
+          'background-color':selectedBgColor
           }" (click)="selectFont(fontFamily)">
     <div class="text-preview" [ngStyle]="{
           'font-size.px':fontSize,
           'font-family':fontFamily,
           'font-style':fontStyle,
           'font-weight':fontWeight,
-          'text-align':fontAlign
+          'text-align':fontAlign,
+          'color':fontColor
+
           }">{{displayText}}
     </div>
   </div>
@@ -58,7 +59,7 @@
   }
 
   .download-button {
-    
+
     width: 32px;
     height: 32px;
     border-radius: 4px;

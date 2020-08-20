@@ -7,15 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CardRowComponent implements OnInit {
 
-  @Input() fontGroup:{}[];
-  @Input() displayText:string;
-  @Input() fontSize:number;
-  @Input() fontColor:string;
-  @Input() selectedBgColor:string;
-  @Input() selectedFont:string; //to check if font is selected.
-  @Input() fontStyle:string;
-  @Input() fontWeight:string;
-  @Input() fontAlign:string;
+  @Input() fontGroup: {}[];
+  @Input() displayText: string;
+  @Input() fontSize: number;
+  @Input() fontColor: string;
+  @Input() selectedBgColor: string;
+  @Input() selectedFont: string; // to check if font is selected.
+  @Input() fontStyle: string;
+  @Input() fontWeight: string;
+  @Input() fontAlign: string;
 
   constructor() { }
 

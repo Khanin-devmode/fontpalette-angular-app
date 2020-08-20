@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {AppState} from "../../+store/fontmatch.reducer";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {AppState} from '../../+store/fontmatch.reducer';
 
 @Component({
   selector: 'app-bg-selection-area',
@@ -11,16 +11,16 @@ import {AppState} from "../../+store/fontmatch.reducer";
 export class BgSelectionAreaComponent implements OnInit {
 
   $previewText: Observable<string>;
-  $selectedFontFamily : Observable<string>;
-  $selectedFontColor : Observable<string>;
+  $selectedFontFamily: Observable<string>;
+  $selectedFontColor: Observable<string>;
   $monoColor: Observable<string[]>;
-  $fontSize:Observable<number>;
-  $splitCompColors:Observable<string[]>;
-  $triadColors:Observable<string[]>;
-  $tetradColors:Observable<string[]>;
-  $compColor:Observable<string>;
+  $fontSize: Observable<number>;
+  $splitCompColors: Observable<string[]>;
+  $triadColors: Observable<string[]>;
+  $tetradColors: Observable<string[]>;
+  $compColor: Observable<string>;
 
-  constructor(private store:Store<AppState>) {
+  constructor(private store: Store<AppState>) {
 
     this.$previewText = this.store.select(state => state.fontMatch.previewText);
     this.$selectedFontFamily = this.store.select(state => state.fontMatch.selectedFontFamily);
