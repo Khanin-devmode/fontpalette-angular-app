@@ -18,7 +18,7 @@
   </mat-tab>
   <mat-tab label="Color combination">
     <div fxLayout="row wrap">
-      <div class="combination-wrapper" fxFlex="100" fxFlex.gt-sm="50" *ngFor="let combination of paletteCombination">
+      <div class="combination-wrapper" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25" *ngFor="let combination of paletteCombination">
         <div class="combination-card"
              [ngStyle]="{'background-color':combination.bgColor}"
              (click)="selectCombination(combination)" fxLayout="row" [fxLayoutAlign]="($fontAlign | async)+ ' center'">
