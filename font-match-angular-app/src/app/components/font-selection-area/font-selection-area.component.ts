@@ -46,7 +46,6 @@ export class FontSelectionAreaComponent implements OnInit {
     this.$fontAlign = this.store.select(state => state.fontMatch.fontAlign);
 
     this.$arrayPalette.subscribe(palette => {
-      console.log (this.util.getPaletteCombination(palette));
       this.paletteCombination = this.util.getPaletteCombination(palette);
     });
 

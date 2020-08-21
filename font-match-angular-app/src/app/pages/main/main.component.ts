@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {AppService} from '../../app.service';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'app-main',
@@ -8,12 +9,28 @@ import {AppService} from '../../app.service';
 })
 export class MainComponent implements OnInit {
 
-  constructor(private appService: AppService) { }
+  scrollPositionY: number;
+  showButton = false;
+
+  constructor(private appService: AppService,
+              private viewPortScroller: ViewportScroller) { }
 
   ngOnInit(): void {
 
     this.appService.fetchGoogleFonts();
 
+    window.onscroll = () => {
+      this.scrollPositionY = this.viewPortScroller.getScrollPosition()[1];
+      this.showButton = this.scrollPositionY > 240;
+    };
+
+
   }
+
+  scrollToTop(): void{
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+
 
 }
