@@ -18,18 +18,18 @@
   </mat-tab>
   <mat-tab label="Color combination">
     <div fxLayout="row wrap">
-      <div class="combination-wrapper" fxFlex="33.33" *ngFor="let combination of paletteCombination">
+      <div class="combination-wrapper" fxFlex="100" fxFlex.gt-sm="50" *ngFor="let combination of paletteCombination">
         <div class="combination-card"
              [ngStyle]="{'background-color':combination.bgColor}"
-             (click)="selectCombination(combination)" fxLayout="row" fxLayoutAlign="center center">
-          <div  class="display-text"
-                [ngStyle]="{
+             (click)="selectCombination(combination)" fxLayout="row" [fxLayoutAlign]="($fontAlign | async)+ ' center'">
+          <div class="display-text"
+               [ngStyle]="{
                 'color':combination.fontColor,
-                          'font-size.px':$fontSize|async,
-          'font-family':$selectedFont | async,
-          'font-style':$fontStyle | async,
-          'font-weight':$fontWeight | async,
-          'text-align':$fontAlign | async
+                'font-size.px':$fontSize|async,
+                'font-family':$selectedFont | async,
+                'font-style':$fontStyle | async,
+                'font-weight':$fontWeight | async,
+                'text-align':$fontAlign | async
                 }">
             {{$displayText | async}}
           </div>
@@ -43,7 +43,8 @@
 <style>
 
   .virtual-viewport {
-    height: calc((256*3px));
+    /*height: calc((256*3px) - 48px);*/
+    height: 2400px;
   }
 
   .combination-card {
@@ -51,10 +52,11 @@
     border-radius: 8px;
     padding: 4px;
     border: #c4c4c4 1px solid;
+    cursor: pointer;
   }
 
-  .combination-wrapper{
-    padding:4px;
+  .combination-wrapper {
+    padding: 4px;
   }
 
   .display-text {

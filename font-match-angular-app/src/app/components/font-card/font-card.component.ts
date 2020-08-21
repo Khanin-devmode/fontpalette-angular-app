@@ -5,7 +5,7 @@ import {AppState} from '../../+store/fontmatch.reducer';
 import {selectFontFamily} from '../../+store/fontmatch.actions';
 
 @Component({
-  selector: 'font-card',
+  selector: 'app-font-card',
   templateUrl: './font-card.component.html',
   styleUrls: ['./font-card.component.scss']
 })

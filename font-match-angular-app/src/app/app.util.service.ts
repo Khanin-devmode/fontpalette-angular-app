@@ -45,8 +45,8 @@ export class AppUtilService {
   getPaletteCombination(palette: string[]): PaletteCombination[]{
 
     const combinationArray: PaletteCombination[] = [];
-    palette.forEach((fontColor, fontIndex) => {
-      palette.forEach((bgColor, bgIndex) => {
+    palette.forEach((bgColor, bgIndex) => {
+      palette.forEach((fontColor, fontIndex) => {
         if (fontColor !== bgColor){
 
           const combination: PaletteCombination = {
