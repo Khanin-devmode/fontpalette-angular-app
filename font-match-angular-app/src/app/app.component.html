@@ -23,7 +23,7 @@
       <a mat-list-item>Feedback</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content style="min-height:100vh">
+  <mat-sidenav-content class="main-content">
 <!--    APP MAIN OUTLET-->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
@@ -32,6 +32,10 @@
 
 
 <style>
+
+  .main-content{
+    min-height: 100vh;
+  }
 
   .menu-button{
     margin:0;
