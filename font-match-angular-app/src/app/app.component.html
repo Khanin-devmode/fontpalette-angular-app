@@ -1,26 +1,26 @@
 <!--<app-header></app-header>-->
-<mat-toolbar fxLayoutGap="10px">
+<mat-toolbar>
   <!--  <img src="assets/logo/logo.svg" class="header-logo">-->
   <button mat-icon-button class="menu-button" (click)="sNav.toggle()" fxHide fxShow.lt-sm>
     <mat-icon>menu</mat-icon>
   </button>
   <div class="font-logo primary-color">Fontmatch<span>.design</span></div>
   <span fxFlex="1 1 auto"></span>
-  <div fxHide.xs>
-    <button mat-flat-button class="header-button">Generate</button>
-    <button mat-flat-button class="header-button">Explore</button>
-    <button mat-flat-button class="header-button">Favorite</button>
-    <button mat-flat-button class="header-button">Feedback</button>
+  <div fxHide.xs fxLayoutGap="4px">
+    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('')">Generate</button>
+    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('explore')">Explore</button>
+    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('favorite')">Favorite</button>
+    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('feedback')">Feedback</button>
   </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
-  <mat-sidenav #sNav [mode]="'over'">
-    <mat-nav-list>
-      <a mat-list-item>Generate</a>
-      <a mat-list-item>Explore</a>
-      <a mat-list-item>Favourite</a>
-      <a mat-list-item>Feedback</a>
+  <mat-sidenav #sNav [mode]="'over'" [autoFocus]="false" >
+    <mat-nav-list class="nav-list">
+      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('')">Generate</a>
+      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('explore')">Explore</a>
+      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('favorite')">Favourite</a>
+      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('feedback')">Feedback</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
@@ -39,6 +39,7 @@
 
   .menu-button{
     margin:0;
+    color:#444444;
   }
 
   .menu-button mat-icon{
@@ -63,8 +64,23 @@
   .header-button{
     width: 80px;
     font-weight:normal;
-    color: #1D4CF2;
     cursor: pointer;
+    padding: 0 4px 0 4px;
+    color: #1D4CF2;
+  }
+
+  .active-route-button{
+    background-color: #1D4CF2;
+    color:white;
+  }
+
+  .route-list{
+    color:#444444;
+  }
+
+  .active-route-list{
+    border-left: 4px solid #1D4CF2;
+    font-weight: bold;
   }
 
   mat-toolbar{
@@ -79,5 +95,12 @@
   mat-toolbar{
     background-color: white;
     border-bottom: #b0b0b0 1px solid;
+    padding:0 8px;
   }
+
+  .nav-list{
+    width:160px;
+    padding:0;
+  }
+
 </style>
