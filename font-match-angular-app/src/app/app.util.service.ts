@@ -43,7 +43,6 @@ export class AppUtilService {
   }
 
   getPaletteCombination(palette: string[]): PaletteCombination[]{
-
     const combinationArray: PaletteCombination[] = [];
     palette.forEach((bgColor, bgIndex) => {
       palette.forEach((fontColor, fontIndex) => {
