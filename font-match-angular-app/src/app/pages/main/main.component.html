@@ -12,8 +12,8 @@
 <!--</div>-->
 <app-font-selection-area></app-font-selection-area>
 
-<button *ngIf="showButton" class="to-top-button animate__animated animate__fadeInUp animate__fast" mat-fab color="primary">
-  <mat-icon class="to-top-icon" (click)="scrollToTop()">upgrade</mat-icon>
+<button *ngIf="showButton" (click)="scrollToTop()" class="to-top-button animate__animated animate__fadeInUp animate__fast" mat-fab color="primary">
+  <mat-icon class="to-top-icon">upgrade</mat-icon>
 </button>
 
 <style type="text/scss">
