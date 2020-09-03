@@ -40,7 +40,7 @@ export interface AppState {
 }
 
 export const initialState: FontMatch = {
-  previewText: 'Find your fonts in colors',
+  previewText: 'Find your font in colors',
   fontSize: 40,
   selectedFontFamily: 'Roboto',
   googleFontList: [],
