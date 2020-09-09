@@ -20,11 +20,11 @@
   <!--    </div>-->
 
   <div class="row-mb row-mt" fxLayout="row">
-    <div *ngIf="($arrayPalette | async)[0] as color1" class="palette-color first-palette" fxFlex="20" [colorPicker]="color1" (colorPickerChange)="updatePalette($event,0)" [cpPosition]="'auto'" [ngStyle]="{'background-color':color1, 'color':readableColorArray[0]}" fxLayoutAlign="center end">{{color1}}</div>
-    <div *ngIf="($arrayPalette | async)[1] as color2" class="palette-color" fxFlex="20" [colorPicker]="color2" (colorPickerChange)="updatePalette($event,1)" [cpPosition]="'auto'" [ngStyle]="{'background-color':color2,'color':readableColorArray[1]}" fxLayoutAlign="center end">{{color2}}</div>
-    <div *ngIf="($arrayPalette | async)[2] as color3" class="palette-color" fxFlex="20" [colorPicker]="color3" (colorPickerChange)="updatePalette($event,2)" [cpPosition]="'auto'" [ngStyle]="{'background-color':color3,'color':readableColorArray[2]}" fxLayoutAlign="center end">{{color3}}</div>
-    <div *ngIf="($arrayPalette | async)[3] as color4" class="palette-color" fxFlex="20" [colorPicker]="color4" (colorPickerChange)="updatePalette($event,3)" [cpPosition]="'auto'" [ngStyle]="{'background-color':color4,'color':readableColorArray[3]}" fxLayoutAlign="center end">{{color4}}</div>
-    <div *ngIf="($arrayPalette | async)[4] as color5" class="palette-color last-palette" fxFlex="20" [colorPicker]="color5" (colorPickerChange)="updatePalette($event,4)" [cpPosition]="'auto'" [ngStyle]="{'background-color':color5,'color':readableColorArray[4]}" fxLayoutAlign="center end">{{color5}}</div>
+    <div *ngIf="($arrayPalette | async)[0] as color1" class="palette-color first-palette" fxFlex="20" [colorPicker]="color1" (colorPickerChange)="updatePalette($event,0)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':color1, 'color':readableColorArray[0]}" fxLayoutAlign="center end">{{color1}}</div>
+    <div *ngIf="($arrayPalette | async)[1] as color2" class="palette-color" fxFlex="20" [colorPicker]="color2" (colorPickerChange)="updatePalette($event,1)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':color2,'color':readableColorArray[1]}" fxLayoutAlign="center end">{{color2}}</div>
+    <div *ngIf="($arrayPalette | async)[2] as color3" class="palette-color" fxFlex="20" [colorPicker]="color3" (colorPickerChange)="updatePalette($event,2)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':color3,'color':readableColorArray[2]}" fxLayoutAlign="center end">{{color3}}</div>
+    <div *ngIf="($arrayPalette | async)[3] as color4" class="palette-color" fxFlex="20" [colorPicker]="color4" (colorPickerChange)="updatePalette($event,3)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':color4,'color':readableColorArray[3]}" fxLayoutAlign="center end">{{color4}}</div>
+    <div *ngIf="($arrayPalette | async)[4] as color5" class="palette-color last-palette" fxFlex="20" [colorPicker]="color5" (colorPickerChange)="updatePalette($event,4)" [cpPosition]="'bottom'" [ngStyle]="{'background-color':color5,'color':readableColorArray[4]}" fxLayoutAlign="center end">{{color5}}</div>
 
   </div>
 
