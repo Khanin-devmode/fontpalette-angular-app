@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState, initialState} from '../../+store/fontmatch.reducer';
 import {Observable} from 'rxjs';
@@ -8,6 +8,7 @@ import {
   updateFontSize, updateFontStyle, updateFontAlign,
 } from '../../+store/fontmatch.actions';
 import {AppService} from '../../app.service';
+import {AppUtilService} from "../../app.util.service";
 
 @Component({
   selector: 'app-customize-area',
@@ -16,7 +17,7 @@ import {AppService} from '../../app.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class CustomizeAreaComponent implements OnInit {
+export class CustomizeAreaComponent implements OnInit,OnDestroy {
 
   $fontSize: Observable<number>;
   $selectedFont: Observable<string>;
@@ -26,12 +27,15 @@ export class CustomizeAreaComponent implements OnInit {
   $googleFontList: Observable<{}[]>;
   $fontStyleName: Observable<string>;
   $fontAlign: Observable<string>;
+  readableColorSub: any;
+  readableColorArray : string[] = [];
 
   fontSizeList = [8, 12, 14, 20, 24, 32, 40, 64, 96, 120];
 
   constructor(
     private store: Store<AppState>,
-    private appService: AppService
+    private appService: AppService,
+    public util:AppUtilService
   ) {
 
     this.$fontSize = this.store.select(state => state.fontMatch.fontSize);
@@ -43,11 +47,19 @@ export class CustomizeAreaComponent implements OnInit {
     this.$fontStyleName = this.store.select(state => state.fontMatch.fontStyleName);
     this.$fontAlign = this.store.select(state => state.fontMatch.fontAlign);
 
+    this.readableColorSub = this.$arrayPalette.subscribe(palette =>{
+      this.readableColorArray = palette.map(color => this.util.getReadableColor(color));
+    });
+
 
   }
 
   ngOnInit(): void {
 
+  }
+
+  ngOnDestroy(): void {
+    this.readableColorSub.unsubscribe();
   }
 
   updateFontSize(fontSize: number){

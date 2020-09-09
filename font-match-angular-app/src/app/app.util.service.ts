@@ -63,6 +63,9 @@ export class AppUtilService {
     return combinationArray;
   }
 
+  getReadableColor(bgColor:string):string{
+    return tinyColor.mostReadable(bgColor,['#f4f4f4','#141414']).toHexString();
+  }
 
 
 }
