@@ -5,25 +5,21 @@
   <button mat-icon-button class="menu-button" (click)="sNav.toggle()" fxHide fxShow.lt-sm>
     <mat-icon>menu</mat-icon>
   </button>
-  <div class="font-logo primary-color">Fontmatch<span>.design</span></div>
+  <div class="font-logo primary-color" routerLink="/generate">Fontmatch<span>.design</span></div>
   <span fxFlex="1 1 auto"></span>
   <div fxHide.xs fxLayoutGap="4px">
-    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('')">Generate</button>
-    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('explore')">Explore</button>
-    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('favorite')">Favorite</button>
-    <button mat-flat-button class="header-button" [class.active-route-button]="isActiveRoute('feedback')">Feedback</button>
+    <button mat-flat-button class="header-button" routerLinkActive="active-route-button" routerLink="/generate">Generate</button>
+    <button mat-flat-button class="header-button" routerLinkActive="active-route-button" routerLink="/about">About</button>
   </div>
-  <a href="https://www.buymeacoffee.com/khanin" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-orange.png" alt="Buy Me A Coffee" style="height: 36px !important;width: 130px !important;margin-top:12px!important;" ></a>
+  <a href="https://www.buymeacoffee.com/khanin" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-orange.png" alt="Buy Me A Coffee" style="height: 36px !important;width: 130px !important;margin:12px 0 0 8px!important;" ></a>
 
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sNav [mode]="'over'" [autoFocus]="false" >
     <mat-nav-list class="nav-list">
-      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('')">Generate</a>
-      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('explore')">Explore</a>
-      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('favorite')">Favourite</a>
-      <a mat-list-item class="route-list" [class.active-route-list]="isActiveRoute('feedback')">Feedback</a>
+      <a mat-list-item class="route-list" routerLinkActive="active-route-list" routerLink="/generate">Generate</a>
+      <a mat-list-item class="route-list" routerLinkActive="active-route-list" routerLink="/about">About</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
@@ -58,6 +54,7 @@
     font-family: Pacifico;
     font-weight:normal;
     font-size: 24px;
+    cursor: pointer;
   }
 
   .font-logo span{

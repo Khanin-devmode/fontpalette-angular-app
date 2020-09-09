@@ -31,6 +31,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {MatListModule} from '@angular/material/list';
     FontCardComponent,
     CardRowComponent,
     BgSelectionAreaComponent,
-    BgCardComponent
+    BgCardComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
