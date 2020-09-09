@@ -56,5 +56,7 @@ export class FontSelectionAreaComponent implements OnInit {
   selectCombination(combination: PaletteCombination): void{
     this.store.dispatch(selectFontColor({colorIndex: combination.selectedFontIndex}));
     this.store.dispatch(selectBgColor({colorIndex: combination.selectedBgIndex}));
+    window.scrollTo({top: 0, behavior: 'smooth'});
+
   }
 }
