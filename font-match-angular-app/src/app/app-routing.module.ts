@@ -4,8 +4,8 @@ import {MainComponent} from './pages/main/main.component';
 import {AboutComponent} from './pages/about/about.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/generate', pathMatch: 'full'},
-  { path: 'generate', component: MainComponent, },
+  { path: '', redirectTo: '/create', pathMatch: 'full'},
+  { path: 'create', component: MainComponent, },
   { path: 'about', component: AboutComponent, },
 
 ];

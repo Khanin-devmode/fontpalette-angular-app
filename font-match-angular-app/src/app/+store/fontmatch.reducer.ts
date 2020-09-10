@@ -40,7 +40,7 @@ export interface AppState {
 }
 
 export const initialState: FontMatch = {
-  previewText: 'Find your font in colors',
+  previewText: 'H e l l o',
   fontSize: 40,
   selectedFontFamily: 'Roboto',
   googleFontList: [],
@@ -50,13 +50,13 @@ export const initialState: FontMatch = {
   triadColors: [],
   tetradColors: [],
   compColor: '',
-  arrayPalette: ['#5288F0', '#99D0B9', '#CAE2A2', '#C15771', '#FC8C8C'],
+  arrayPalette: ['#1982c4', '#ffca3a', '#8ac926', '#ff595e', '#6a4c93'],
   fontColorIndex: 0,
   bgColorIndex: 1,
   fontStyleName: 'regular',
   fontStyle: 'normal',
   fontWeight: 'normal',
-  fontAlign: 'start'
+  fontAlign: 'center'
 
 };
 
@@ -84,15 +84,16 @@ const _fontMatchReducer = createReducer(initialState,
   // on(reset, (state) => (Object.assign(initialState))),
   on(reset, (state) => ({
     ...state,
-    previewText: 'Find your fonts in colors',
+    previewText: 'H e l l o',
     fontSize: 40,
     selectedFontFamily: 'Roboto',
-    arrayPalette: ['#5288F0', '#99D0B9', '#CAE2A2', '#C15771', '#FC8C8C'],
+    arrayPalette: ['#1982c4', '#ffca3a', '#8ac926', '#ff595e', '#6a4c93'],
     fontColorIndex: 0,
     bgColorIndex: 1,
     fontStyleName: 'regular',
     fontStyle: 'normal',
-    fontWeight: 'normal'
+    fontWeight: 'normal',
+    fontAlign: 'center'
   })),
   on(updateFontStyle, (state, {fontStyleName, fontStyle, fontWeight}) => ({
     ...state,

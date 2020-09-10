@@ -1,44 +1,79 @@
-<mat-tab-group animationDuration="800" mat-align-tabs="start">
-  <mat-tab label="Fonts select">
-
-    <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="256">
-      <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"
-                    [fontGroup]="fontGroup"
-                    [displayText]="$displayText | async"
-                    [fontSize]="$fontSize | async"
-                    [fontColor]="($arrayPalette | async)[$fontColorIndex|async]"
-                    [selectedBgColor]="($arrayPalette | async)[$bgColorIndex|async]"
-                    [selectedFont]="$selectedFont | async"
-                    [fontStyle]="$fontStyle |async"
-                    [fontWeight]="$fontWeight | async"
-                    [fontAlign]="$fontAlign | async"
-      ></app-card-row>
-    </cdk-virtual-scroll-viewport>
-
-  </mat-tab>
-  <mat-tab label="Color combination">
-    <div fxLayout="row wrap">
-      <div class="combination-wrapper" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25" *ngFor="let combination of paletteCombination">
-        <div class="combination-card"
-             [ngStyle]="{'background-color':combination.bgColor}"
-             (click)="selectCombination(combination)" fxLayout="row" [fxLayoutAlign]="($fontAlign | async)+ ' center'">
-          <div class="display-text"
-               [ngStyle]="{
+<h2>Color combination</h2>
+<div fxLayout="row wrap">
+  <div class="combination-wrapper" fxFlex="50" fxFlex.gt-sm="50" fxFlex.gt-md="25" *ngFor="let combination of paletteCombination">
+    <div class="combination-card-thin"
+         [ngStyle]="{'background-color':combination.bgColor}"
+         (click)="selectCombination(combination)" fxLayout="row" [fxLayoutAlign]="($fontAlign | async)+ ' center'">
+      <div class="display-text-thin"
+           [ngStyle]="{
                 'color':combination.fontColor,
-                'font-size.px':$fontSize|async,
+                'font-size.px':28,
                 'font-family':$selectedFont | async,
                 'font-style':$fontStyle | async,
                 'font-weight':$fontWeight | async,
                 'text-align':$fontAlign | async
                 }">
-            {{$displayText | async}}
-          </div>
-
-        </div>
+        {{$displayText | async}}
       </div>
+
     </div>
-  </mat-tab>
-</mat-tab-group>
+  </div>
+</div>
+<h2>Fonts</h2>
+<cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="256">
+  <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"
+                [fontGroup]="fontGroup"
+                [displayText]="$displayText | async"
+                [fontSize]="$fontSize | async"
+                [fontColor]="($arrayPalette | async)[$fontColorIndex|async]"
+                [selectedBgColor]="($arrayPalette | async)[$bgColorIndex|async]"
+                [selectedFont]="$selectedFont | async"
+                [fontStyle]="$fontStyle |async"
+                [fontWeight]="$fontWeight | async"
+                [fontAlign]="$fontAlign | async"
+  ></app-card-row>
+</cdk-virtual-scroll-viewport>
+
+<!--<mat-tab-group animationDuration="800" mat-align-tabs="start" selectedIndex="0">-->
+<!--  <mat-tab label="Fonts select">-->
+
+<!--    <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="256">-->
+<!--      <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"-->
+<!--                    [fontGroup]="fontGroup"-->
+<!--                    [displayText]="$displayText | async"-->
+<!--                    [fontSize]="$fontSize | async"-->
+<!--                    [fontColor]="($arrayPalette | async)[$fontColorIndex|async]"-->
+<!--                    [selectedBgColor]="($arrayPalette | async)[$bgColorIndex|async]"-->
+<!--                    [selectedFont]="$selectedFont | async"-->
+<!--                    [fontStyle]="$fontStyle |async"-->
+<!--                    [fontWeight]="$fontWeight | async"-->
+<!--                    [fontAlign]="$fontAlign | async"-->
+<!--      ></app-card-row>-->
+<!--    </cdk-virtual-scroll-viewport>-->
+<!--  </mat-tab>-->
+<!--  <mat-tab label="Color combination">-->
+<!--    <div fxLayout="row wrap">-->
+<!--      <div class="combination-wrapper" fxFlex="100" fxFlex.gt-sm="50" fxFlex.gt-md="25" *ngFor="let combination of paletteCombination">-->
+<!--        <div class="combination-card"-->
+<!--             [ngStyle]="{'background-color':combination.bgColor}"-->
+<!--             (click)="selectCombination(combination)" fxLayout="row" [fxLayoutAlign]="($fontAlign | async)+ ' center'">-->
+<!--          <div class="display-text"-->
+<!--               [ngStyle]="{-->
+<!--                'color':combination.fontColor,-->
+<!--                'font-size.px':$fontSize|async,-->
+<!--                'font-family':$selectedFont | async,-->
+<!--                'font-style':$fontStyle | async,-->
+<!--                'font-weight':$fontWeight | async,-->
+<!--                'text-align':$fontAlign | async-->
+<!--                }">-->
+<!--            {{$displayText | async}}-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </mat-tab>-->
+<!--</mat-tab-group>-->
 
 <style>
 
@@ -55,6 +90,24 @@
     cursor: pointer;
   }
 
+  .combination-card-thin {
+    height: 72px;
+    border-radius: 8px;
+    padding: 4px;
+    border: #c4c4c4 1px solid;
+    cursor: pointer;
+  }
+
+  .display-text-thin {
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 90%;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    line-height: normal;
+
+  }
+
   .combination-wrapper {
     padding: 4px;
   }
@@ -65,6 +118,10 @@
     overflow: hidden;
     line-height: normal;
 
+  }
+
+  h2{
+    margin: 16px 0 !important;
   }
 
 </style>
