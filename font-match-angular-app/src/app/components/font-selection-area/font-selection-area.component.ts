@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../+store/fontmatch.reducer';
-import {Observable, Observer} from 'rxjs';
+import {Observable} from 'rxjs';
 import {AppUtilService} from '../../app.util.service';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {PaletteCombination} from '../../+store/fontmatch.model';
 import {selectBgColor, selectFontColor} from '../../+store/fontmatch.actions';
+import {AppService} from '../../app.service';
 
 @Component({
   selector: 'app-font-selection-area',
@@ -28,9 +28,12 @@ export class FontSelectionAreaComponent implements OnInit {
 
   paletteCombination: PaletteCombination[] = [];
 
+  searchInput = '';
+  categoryInput = '';
+
   constructor(private store: Store<AppState>,
               public util: AppUtilService,
-              public breakpointObserver: BreakpointObserver
+              private appService: AppService
 
   ) {
 
@@ -59,4 +62,15 @@ export class FontSelectionAreaComponent implements OnInit {
     window.scrollTo({top: 0, behavior: 'smooth'});
 
   }
+
+  filterName(e):void{
+    this.searchInput = e.target.value;
+    this.appService.searchFont(this.searchInput,this.categoryInput);
+  }
+
+  filterCategory(category):void{
+    this.categoryInput = category;
+    this.appService.searchFont(this.searchInput,this.categoryInput);
+  }
+
 }

@@ -20,13 +20,29 @@
   </div>
 </div>
 <h2>Fonts</h2>
+<div class="search-area-wrapper" fxLayout="row wrap" fxLayoutGap="12px">
+  <mat-form-field appearance="outline" fxFlex.xs="50">
+    <mat-label>Search</mat-label>
+    <input matInput type="text" placeholder="Font family" (keyup)="filterName($event)">
+  </mat-form-field>
 
-<mat-form-field appearance="outline">
-  <mat-label>Search</mat-label>
-  <input matInput type="text" placeholder="search...">
-</mat-form-field>
+  <mat-form-field appearance="outline" fxFlex.xs="40">
+    <mat-label>Category</mat-label>
+    <mat-select value="" (selectionChange)="filterCategory($event.value)">
+      <mat-option value="">All</mat-option>
+      <mat-option value="serif">Serif</mat-option>
+      <mat-option value="sans-serif">Sans Serif</mat-option>
+      <mat-option value="display">Display</mat-option>
+      <mat-option value="handwriting">Handwriting</mat-option>
+      <mat-option value="monospace">Monospace</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="256">
+  <div class="no-result-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="($groupedFontList|async).length == 0">
+    <div class="no-result-text">Can't find any font that match your search.</div>
+  </div>
   <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"
                 [fontGroup]="fontGroup"
                 [displayText]="$displayText | async"
@@ -129,6 +145,21 @@
   h2{
     margin: 16px 8px !important;
   }
+
+  .no-result-wrapper{
+    height:360px
+  }
+
+  .no-result-text{
+    font-size: 36px;
+    color: #757575;
+    line-height: normal;
+  }
+
+  .search-area-wrapper{
+    padding: 0 8px;
+  }
+
 
 </style>
 

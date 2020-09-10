@@ -4,3 +4,8 @@ export interface PaletteCombination{
     fontColor: string;
     bgColor: string;
 }
+
+export interface GoogleFontObj{
+  family?:string;
+  category?:string;
+}

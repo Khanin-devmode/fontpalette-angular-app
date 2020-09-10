@@ -6,6 +6,7 @@ import * as WebFont from 'webfontloader';
 import {AppUtilService} from './app.util.service';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {Observable} from 'rxjs';
+import {GoogleFontObj} from "./+store/fontmatch.model";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AppService {
 
   loadedGoogleFont: string[] = [];
   $groupedFontList: Observable<{}[]>;
-  googleFontList: {}[] = [];
+  googleFontList: GoogleFontObj[] = [];
 
   viewportSize: 'xs'|'sm'|'md'|'lg'|'xl' = 'md';
 
@@ -107,5 +108,32 @@ export class AppService {
     this.store.dispatch(selectFontFamily({fontFamily}));
 
   }
+
+  searchFont(name:string,category:string): void{
+
+    if(category){
+
+      let catFiltered = this.googleFontList.filter(fontObj => fontObj.category === category);
+      this.filterName(catFiltered, name);
+
+    }else{
+
+      this.filterName(this.googleFontList,name);
+
+    }
+
+  }
+
+  filterName(catFiltered:GoogleFontObj[],name):void{
+    if(name.length > 1){
+      let nameFiltered = catFiltered.filter(fontObj => fontObj.family.toLocaleLowerCase().includes(name.toLowerCase()));
+      this.store.dispatch(updateFontGroup({groupedFontList: this.util.groupArray(nameFiltered, this.getCardCol(this.viewportSize))}));
+
+    }else{
+      this.store.dispatch(updateFontGroup({groupedFontList: this.util.groupArray(catFiltered, this.getCardCol(this.viewportSize))}));
+    }
+  }
+
+
 
 }

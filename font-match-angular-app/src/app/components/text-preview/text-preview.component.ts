@@ -34,7 +34,7 @@ export class TextPreviewComponent{
     this.$fontAlign = this.store.select(state => state.fontMatch.fontAlign);
   }
 
-  updateText(e){
+  updateText(e):void{
     if (e.target.value){
       this.store.dispatch(updateText({inputText: e.target.value}));
     }else{
@@ -42,7 +42,7 @@ export class TextPreviewComponent{
     }
   }
 
-  reset(){
+  reset():void{
     this.store.dispatch(reset());
   }
 
