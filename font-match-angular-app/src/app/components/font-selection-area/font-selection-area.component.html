@@ -20,6 +20,12 @@
   </div>
 </div>
 <h2>Fonts</h2>
+
+<mat-form-field appearance="outline">
+  <mat-label>Search</mat-label>
+  <input matInput type="text" placeholder="search...">
+</mat-form-field>
+
 <cdk-virtual-scroll-viewport class="virtual-viewport" itemSize="256">
   <app-card-row *cdkVirtualFor="let fontGroup of $groupedFontList | async"
                 [fontGroup]="fontGroup"
@@ -121,7 +127,7 @@
   }
 
   h2{
-    margin: 16px 0 !important;
+    margin: 16px 8px !important;
   }
 
 </style>
